@@ -628,15 +628,21 @@
   </div>
 </div>
 <script>
+  window._lgj_unlocked = false;
   (function(){
-    if(localStorage.getItem('lgj_v1')==='ok'){document.getElementById('gate').style.display='none';}
+    if(localStorage.getItem('lgj_v1')==='ok'){
+      document.getElementById('gate').style.display='none';
+      window._lgj_unlocked = true;
+    }
     document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
     setTimeout(function(){document.getElementById('pw-input').focus();},100);
   })();
   function tryUnlock(){
     if(btoa(document.getElementById('pw-input').value)==='QXNzYXNzaW4='){
       localStorage.setItem('lgj_v1','ok');
+      window._lgj_unlocked = true;
       document.getElementById('gate').style.display='none';
+      if(typeof runAnimations==='function') runAnimations();
     } else {
       document.getElementById('pw-err').style.display='block';
       document.getElementById('pw-input').value='';
@@ -932,7 +938,6 @@
 </footer>
 
 <script>
-  // ── ANIMATED HERO COUNTERS ──
   function animateNum(el, target, duration, fmt) {
     const start = performance.now();
     const tick = (now) => {
@@ -947,46 +952,38 @@
     requestAnimationFrame(tick);
   }
 
-  const heroObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !e.target.dataset.done) {
-        e.target.dataset.done = '1';
-        animateNum(document.getElementById('ctr-rev'),  558, 1600, 'dollar-k');
-        animateNum(document.getElementById('ctr-cust'), 217, 1800, 'plain');
-        animateNum(document.getElementById('ctr-cr'),   90,  1400, 'pct');
-      }
-    });
-  }, { threshold: 0.4 });
-  heroObs.observe(document.querySelector('.hero-kpis'));
+  function runAnimations() {
+    // ── Reset + animate hero counters ──
+    const rev  = document.getElementById('ctr-rev');
+    const cust = document.getElementById('ctr-cust');
+    const cr   = document.getElementById('ctr-cr');
+    rev.textContent = '$0'; cust.textContent = '0'; cr.textContent = '0';
+    animateNum(rev,  558, 1600, 'dollar-k');
+    animateNum(cust, 217, 1800, 'plain');
+    animateNum(cr,    90, 1400, 'pct');
 
-  // ── BAR CHART ANIMATION ──
-  const chartObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !e.target.dataset.done) {
-        e.target.dataset.done = '1';
-        const bars  = e.target.querySelectorAll('.bar-body');
-        const lbls  = e.target.querySelectorAll('.bar-label-top');
-        bars.forEach((bar, i) => {
-          setTimeout(() => { bar.style.height = bar.dataset.pct + '%'; }, i * 110);
-        });
+    // ── Reset + animate bar chart ──
+    const bars = document.querySelectorAll('.bar-body');
+    const lbls = document.querySelectorAll('.bar-label-top');
+    bars.forEach(b => { b.style.transition = 'none'; b.style.height = '0'; });
+    lbls.forEach(l => l.classList.remove('show'));
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      bars.forEach((bar, i) => {
         setTimeout(() => {
-          lbls.forEach(l => l.classList.add('show'));
-        }, bars.length * 110 + 500);
-      }
-    });
-  }, { threshold: 0.3 });
-  chartObs.observe(document.getElementById('chartBars'));
+          bar.style.transition = 'height 1.1s cubic-bezier(.34,1.4,.64,1)';
+          bar.style.height = bar.dataset.pct + '%';
+        }, i * 110 + 200);
+      });
+      setTimeout(() => lbls.forEach(l => l.classList.add('show')), bars.length * 110 + 700);
+    }));
 
-  // ── SECTION FADE IN ──
-  const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        fadeObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.section').forEach(s => fadeObs.observe(s));
+    // ── Stagger sections in ──
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(s => { s.style.opacity='0'; s.style.transform='translateY(24px)'; s.classList.remove('visible'); });
+    sections.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 130 + 100));
+  }
+
+  if (window._lgj_unlocked) runAnimations();
 </script>
 </body>
 </html>

@@ -585,15 +585,21 @@
   </div>
 </div>
 <script>
+  window._lgj_unlocked = false;
   (function(){
-    if(localStorage.getItem('lgj_v1')==='ok'){document.getElementById('gate').style.display='none';}
+    if(localStorage.getItem('lgj_v1')==='ok'){
+      document.getElementById('gate').style.display='none';
+      window._lgj_unlocked = true;
+    }
     document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
     setTimeout(function(){document.getElementById('pw-input').focus();},100);
   })();
   function tryUnlock(){
     if(btoa(document.getElementById('pw-input').value)==='QXNzYXNzaW4='){
       localStorage.setItem('lgj_v1','ok');
+      window._lgj_unlocked = true;
       document.getElementById('gate').style.display='none';
+      if(typeof runAnimations==='function') runAnimations();
     } else {
       document.getElementById('pw-err').style.display='block';
       document.getElementById('pw-input').value='';
@@ -1031,16 +1037,14 @@
     requestAnimationFrame(tick);
   }
 
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !e.target.dataset.done) {
-        e.target.dataset.done = '1';
-        animateNum(e.target, parseInt(e.target.dataset.value), 1600, e.target.dataset.fmt);
-      }
+  function runAnimations() {
+    document.querySelectorAll('.counter').forEach(el => {
+      el.textContent = '0';
+      animateNum(el, parseInt(el.dataset.value), 1600, el.dataset.fmt);
     });
-  }, { threshold: 0.5 });
+  }
 
-  document.querySelectorAll('.counter').forEach(el => obs.observe(el));
+  if (window._lgj_unlocked) runAnimations();
 </script>
 </body>
 </html>
