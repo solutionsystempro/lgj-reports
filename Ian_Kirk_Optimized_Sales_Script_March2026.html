@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Kirk — Optimized Sales Script | March 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0a0d12;
+      --surface:   #111621;
+      --surface2:  #181f2e;
+      --border:    #1e2740;
+      --accent:    #3b82f6;
+      --accent2:   #6366f1;
+      --green:     #22c55e;
+      --yellow:    #f59e0b;
+      --red:       #ef4444;
+      --purple:    #a855f7;
+      --cyan:      #06b6d4;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --radius:    12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #0f172a 100%);
+      padding: 56px 40px 48px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent2);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #e2e8f0, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 640px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+    }
+    .dot-blue  { background: var(--accent); }
+    .dot-green { background: var(--green); }
+    .dot-purple{ background: var(--purple); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 48px 40px 80px; }
+
+    /* ── WARNING BOX ── */
+    .alert {
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-left: 4px solid var(--yellow);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .alert-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .alert p { font-size: 13px; color: var(--muted); }
+    .alert strong { color: var(--text); }
+
+    /* ── SECTION HEADER ── */
+    .section { margin-bottom: 60px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .section-num {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .num-blue   { background: rgba(59,130,246,0.15); color: var(--accent); border: 1px solid rgba(59,130,246,0.3); }
+    .num-green  { background: rgba(34,197,94,0.12);  color: var(--green);  border: 1px solid rgba(34,197,94,0.3); }
+    .num-purple { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+    .num-yellow { background: rgba(245,158,11,0.12); color: var(--yellow); border: 1px solid rgba(245,158,11,0.3); }
+    .num-cyan   { background: rgba(6,182,212,0.12);  color: var(--cyan);   border: 1px solid rgba(6,182,212,0.3); }
+    .num-red    { background: rgba(239,68,68,0.12);  color: var(--red);    border: 1px solid rgba(239,68,68,0.3); }
+
+    .section-title-wrap h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .section-title-wrap .section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .ct-blue   { color: var(--accent); }
+    .ct-green  { color: var(--green); }
+    .ct-purple { color: var(--purple); }
+    .ct-yellow { color: var(--yellow); }
+    .ct-cyan   { color: var(--cyan); }
+    .ct-red    { color: var(--red); }
+
+    /* ── SCRIPT LINE ── */
+    .script-line {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 10px 0;
+      font-style: italic;
+      color: #c7d2fe;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .script-line.green  { border-color: var(--green);  color: #bbf7d0; }
+    .script-line.purple { border-color: var(--purple); color: #e9d5ff; }
+    .script-line.yellow { border-color: var(--yellow); color: #fde68a; }
+    .script-line.cyan   { border-color: var(--cyan);   color: #a5f3fc; }
+    .script-line.red    { border-color: var(--red);    color: #fecaca; }
+
+    /* ── LABEL PILL ── */
+    .pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .pill-blue   { background: rgba(59,130,246,0.15); color: var(--accent); }
+    .pill-green  { background: rgba(34,197,94,0.15);  color: var(--green); }
+    .pill-purple { background: rgba(168,85,247,0.15); color: var(--purple); }
+    .pill-yellow { background: rgba(245,158,11,0.15); color: var(--yellow); }
+    .pill-red    { background: rgba(239,68,68,0.15);  color: var(--red); }
+    .pill-cyan   { background: rgba(6,182,212,0.15);  color: var(--cyan); }
+
+    /* ── STEP LIST ── */
+    .steps { list-style: none; }
+    .steps li {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: var(--accent2);
+      font-weight: 700;
+      font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-content strong { color: var(--text); font-weight: 700; }
+    .step-content p { color: var(--muted); font-size: 13px; margin-top: 3px; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── BELIEF GRID ── */
+    .belief-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .belief-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .belief-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .bc-1::before { background: var(--red); }
+    .bc-2::before { background: var(--yellow); }
+    .bc-3::before { background: var(--accent); }
+    .bc-4::before { background: var(--green); }
+    .bc-5::before { background: var(--purple); }
+    .belief-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .belief-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .belief-q {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .belief-cue {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--cyan);
+    }
+
+    /* ── OFFER GRID ── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .offer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 22px 18px;
+    }
+    .offer-tier {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .offer-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .offer-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .offer-list { list-style: none; }
+    .offer-list li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex; gap: 8px;
+    }
+    .offer-list li:last-child { border-bottom: none; }
+    .offer-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .oc-entry  { border-top: 3px solid var(--green); }
+    .oc-core   { border-top: 3px solid var(--accent); }
+    .oc-premium{ border-top: 3px solid var(--purple); }
+
+    /* ── OBJECTION BLOCK ── */
+    .objection-block {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .obj-header {
+      background: rgba(239,68,68,0.08);
+      border-bottom: 1px solid rgba(239,68,68,0.2);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--red);
+    }
+    .obj-body { padding: 18px 20px; }
+    .obj-step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .obj-step-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+      width: 68px;
+      margin-top: 3px;
+    }
+
+    /* ── CODE / MONO ── */
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 22px;
+      color: #a5b4fc;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      margin-top: 12px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 32px 0 0;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── TIMELINE BAR ── */
+    .timeline {
+      display: flex;
+      gap: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 18px 0;
+      height: 36px;
+    }
+    .tl-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .tl-seg span { display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+
+    /* ── GATE BOX ── */
+    .gate-box {
+      background: rgba(34,197,94,0.06);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .gate-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .gate-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+    }
+    .gate-row:last-child { border-bottom: none; }
+    .gate-count {
+      font-weight: 800;
+      font-size: 1.1rem;
+      width: 36px;
+      text-align: center;
+    }
+
+    @media(max-width:640px){
+      .hero { padding: 36px 20px 32px; }
+      .container { padding: 32px 20px 60px; }
+      .belief-grid, .offer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#0a0d12;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">
+  <div style="background:#111621;border:1px solid #1e2740;border-radius:16px;padding:48px 40px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
+    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(99,102,241,0.15));border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px;">🔒</div>
+    <h2 style="font-size:20px;font-weight:800;color:#e2e8f0;margin-bottom:8px;letter-spacing:-0.3px;">Private Document</h2>
+    <p style="font-size:13px;color:#64748b;margin-bottom:28px;line-height:1.6;">Enter the access password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;background:#0a0d12;border:1px solid #1e2740;border-radius:8px;padding:13px 16px;color:#e2e8f0;font-size:14px;outline:none;margin-bottom:12px;font-family:'Inter',sans-serif;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='#1e2740'" />
+    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:8px;padding:13px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.3px;">Unlock →</button>
+    <p id="pw-err" style="display:none;font-size:12px;color:#ef4444;margin-top:12px;font-weight:500;">Incorrect password. Try again.</p>
+  </div>
+</div>
+<script>
+  (function(){
+    if(localStorage.getItem('lgj_v1')==='ok'){document.getElementById('gate').style.display='none';}
+    document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
+    setTimeout(function(){document.getElementById('pw-input').focus();},100);
+  })();
+  function tryUnlock(){
+    if(btoa(document.getElementById('pw-input').value)==='QXNzYXNzaW4='){
+      localStorage.setItem('lgj_v1','ok');
+      document.getElementById('gate').style.display='none';
+    } else {
+      document.getElementById('pw-err').style.display='block';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+</script>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-label">Lead Gen Jay · Ian Kirk · March 2026</div>
+  <h1>Optimized Sales Script</h1>
+  <p class="hero-sub">
+    Synthesized from Mason Church's Script-less System, Jeremy Miner's NEPQ, Cole Gordon, Alex Hormozi,
+    and Tony Robbins — calibrated to Ian's call data and the LGJ offer stack.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-badge"><span class="dot dot-blue"></span>Target: $70K Revenue</div>
+    <div class="hero-badge"><span class="dot dot-green"></span>New Cash: $55K</div>
+    <div class="hero-badge"><span class="dot dot-purple"></span>Powered by Scout AI</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ══ ALERT ══ -->
+<div class="alert">
+  <div class="alert-title">February Fixes Baked In</div>
+  <p>
+    <strong>3 patterns killed closes in Feb:</strong>
+    (1) Pitching before all 5 beliefs surfaced — especially with Stefan S. and similar calls.
+    (2) Rabbit hole discovery — calls that ran 60+ min with no frame reset.
+    (3) Missing the DFY upsell window after confirming "budget isn't the issue."
+    Every section below is engineered to prevent these.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════
+     SECTION 0 — PRE-CALL
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-blue">0</div>
+    <div class="section-title-wrap">
+      <h2>Pre-Call Prep</h2>
+      <div class="section-tag">2 minutes before · Never skip</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">Mental Checklist</div>
+    <ul class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Review lead source</strong>
+          <p>DM thread, VSL buyer, referral? Warm leads have higher DFY potential — flag them.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Know their business in one sentence</strong>
+          <p>Agency? SaaS? Consultant? Revenue range? Fills the "Situation" section faster.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Set your tone anchor: Calm. Curious. Non-reactive.</strong>
+          <p>You are a doctor — not a closer. You diagnose. If it's a fit, you prescribe.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Set a 45-minute hard mental timer</strong>
+          <p>If you're at minute 35 and haven't transitioned to pitch — you've rabbit-holed. Reset.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-purple">ICP Quick Qualify (30 sec scan)</div>
+    <table>
+      <thead><tr><th>Signal</th><th>Qualifies</th><th>Flags</th></tr></thead>
+      <tbody>
+        <tr><td>Business type</td><td>B2B service, agency, SaaS, consultant</td><td>Ecom, B2C local, dropshipping</td></tr>
+        <tr><td>Revenue</td><td>$5K–$80K/mo</td><td>Under $2K or unclear</td></tr>
+        <tr><td>Decision maker</td><td>CEO / founder who controls budget</td><td>"I need to check with my partner"</td></tr>
+        <tr><td>Pain trigger</td><td>Stuck on referrals, need pipeline</td><td>Just researching, "not urgent"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — OPENING
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-blue">1</div>
+    <div class="section-title-wrap">
+      <h2>Opening &amp; Frame</h2>
+      <div class="section-tag">Target: ≤ 2 minutes · No small talk loops</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">Rapport — 60 Seconds Max</div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">One genuine question. One exchange. Move on.</p>
+    <div class="script-line">
+      "What's been a highlight of your week so far — anything good going on?"
+    </div>
+    <div class="script-line green">
+      [Listen, mirror briefly, pivot immediately to frame]
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">Frame the Call — Non-Negotiable</div>
+    <div class="script-line green">
+      "Here's how I want to use our time together — I'm going to ask you some questions about where you're at and where you want to be. If what you share tells me we can actually help, I'll walk you through exactly what that looks like. If it's not a fit, I'll tell you straight. Does that work?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      ⚡ <strong style="color:var(--text);">Why this matters:</strong> This one line sets you as the authority and prevents
+      prospects from hijacking the call. If they say "can you just send info?" — you've already framed why that wastes their time.
+    </p>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — DISCOVERY
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-cyan">2</div>
+    <div class="section-title-wrap">
+      <h2>Discovery Flow</h2>
+      <div class="section-tag">Target: 20–25 min · You talk 30%, they talk 70%</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="tl-seg" style="background:rgba(59,130,246,0.2);color:#93c5fd;width:8%;">
+      <span>North<br/>Star</span>
+    </div>
+    <div class="tl-seg" style="background:rgba(6,182,212,0.2);color:#67e8f9;width:18%;">
+      <span>Situation</span>
+    </div>
+    <div class="tl-seg" style="background:rgba(239,68,68,0.2);color:#fca5a5;width:22%;">
+      <span>Problem<br/>Awareness</span>
+    </div>
+    <div class="tl-seg" style="background:rgba(245,158,11,0.2);color:#fcd34d;width:16%;">
+      <span>Solution<br/>Awareness</span>
+    </div>
+    <div class="tl-seg" style="background:rgba(239,68,68,0.3);color:#f87171;width:20%;">
+      <span>Consequence</span>
+    </div>
+    <div class="tl-seg" style="background:rgba(168,85,247,0.2);color:#d8b4fe;width:16%;">
+      <span>Commit<br/>Check</span>
+    </div>
+  </div>
+
+  <!-- NORTH STAR -->
+  <div class="card">
+    <div class="card-title ct-cyan">① North Star — Define the Destination</div>
+    <div class="script-line cyan">
+      "What outcome are you actually going after in the next three to six months — like what does success look like if we fast-forward?"
+    </div>
+    <div class="script-line cyan">
+      "And when you say [their answer] — what does that mean for you personally? Why does that number matter?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      📍 Write their answer down verbatim. You will mirror it back during the pitch and close.
+    </p>
+  </div>
+
+  <!-- SITUATION -->
+  <div class="card">
+    <div class="card-title ct-cyan">② Situation — Current State &amp; Numbers</div>
+    <div class="pill pill-blue">NEPQ Connecting</div>
+    <div class="script-line cyan">
+      "Walk me through what you're currently doing to get clients right now."
+    </div>
+    <div class="script-line cyan">
+      "How many calls or leads are you generating per month on average?"
+    </div>
+    <div class="script-line cyan">
+      "And where does most of that come from — referrals, ads, outbound, something else?"
+    </div>
+    <div class="script-line cyan">
+      "It sounds like things are going fairly well on [their best channel]. Is there anything you'd change about that if you could?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      🎯 <strong style="color:var(--text);">The Two Truths Question</strong> (Miner): Disarms defensiveness.
+      They reveal the crack in their own "everything's fine" story.
+    </p>
+  </div>
+
+  <!-- PROBLEM AWARENESS -->
+  <div class="card">
+    <div class="card-title ct-red">③ Problem Awareness — Surface the Pain</div>
+    <div class="pill pill-red">Do NOT skip. Do NOT rush.</div>
+    <div class="script-line red">
+      "Do you like those results?"
+    </div>
+    <div class="script-line red">
+      "What's specifically not working the way you want it to?"
+    </div>
+    <div class="script-line red">
+      "When did you first notice that was a problem?"
+    </div>
+    <div class="script-line red">
+      "How long have you been dealing with that?"
+    </div>
+    <div class="script-line red">
+      "And how does that affect you day-to-day — like what does a week look like when the pipeline's dry?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      🔑 <strong style="color:var(--text);">Patience is power here.</strong> Don't jump to solutions.
+      Silence after these questions forces them to fill the space with emotion. That emotion is what closes the sale.
+    </p>
+  </div>
+
+  <!-- SOLUTION AWARENESS -->
+  <div class="card">
+    <div class="card-title ct-yellow">④ Solution Awareness — Surface Doubt in Their DIY</div>
+    <div class="pill pill-yellow">NEPQ Solution Awareness</div>
+    <div class="script-line yellow">
+      "What have you tried so far to fix that?"
+    </div>
+    <div class="script-line yellow">
+      "Why not keep doing it that way — what's stopping that from working long-term?"
+    </div>
+    <div class="script-line yellow">
+      "If you had a magic wand for your outbound right now — which part would you fix first: the tech, the copy, or the targeting?"
+    </div>
+    <div class="script-line yellow">
+      "And what's kept you from getting that handled already?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      💡 <strong style="color:var(--text);">Negative question (Mason / Cole Gordon):</strong>
+      "Why not keep doing it that way?" forces them to disqualify their own current approach — not you.
+    </p>
+  </div>
+
+  <!-- CONSEQUENCE -->
+  <div class="card">
+    <div class="card-title ct-red">⑤ Consequence Questions — Make the Cost Real</div>
+    <div class="pill pill-red">NEPQ Consequence · Most skipped = most kills</div>
+    <div class="script-line red">
+      "What's that costing you every month that this isn't solved — in actual dollars, best estimate?"
+    </div>
+    <div class="script-line red">
+      "What happens to the business if nothing changes in the next six months?"
+    </div>
+    <div class="script-line red">
+      "And twelve months from now — if you're still in the same spot — what does that look like for you?"
+    </div>
+    <div class="script-line red">
+      "How long can you realistically afford to stay where you are?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      🔥 <strong style="color:var(--text);">Tony Robbins principle:</strong>
+      Pain is a greater motivator than pleasure. These questions don't create pain — they surface the pain they're already living with.
+      Let them answer fully. Do not rescue them.
+    </p>
+  </div>
+
+  <!-- DESIRE -->
+  <div class="card">
+    <div class="card-title ct-green">⑥ Future Vision — Paint the Other Side</div>
+    <div class="script-line green">
+      "Now flip it — what does life look like when this is actually solved? Twelve months from now, fully fixed."
+    </div>
+    <div class="script-line green">
+      "What does [their revenue goal] allow you to do that you can't do right now?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      🌟 Let them paint the picture. You'll use their exact words in the pitch.
+      <strong style="color:var(--text);">"You said you want [their words]..."</strong> — that's the close.
+    </p>
+  </div>
+
+  <!-- COMMITMENT CHECK -->
+  <div class="card">
+    <div class="card-title ct-purple">⑦ Commitment Check — Qualify Readiness</div>
+    <div class="script-line purple">
+      "Is solving this a nice-to-have for you right now, or is it genuinely a must?"
+    </div>
+    <div class="script-line purple">
+      "On a scale of 1–10, how important is figuring this out in the next 30 days?"
+    </div>
+    <div class="script-line purple">
+      "What would need to be true for you to be a clear yes on whatever we put in front of you today?"
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      ⚠️ <strong style="color:var(--text);">If they answer below 7 or say "nice to have"</strong>
+      — do not pitch. Return to consequence questions. They haven't bought the problem yet.
+    </p>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — BUYING BELIEFS GATE
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-green">3</div>
+    <div class="section-title-wrap">
+      <h2>The 5 Buying Beliefs Gate</h2>
+      <div class="section-tag">Mason Church · DO NOT PITCH UNTIL 3–4 ARE CONFIRMED</div>
+    </div>
+  </div>
+
+  <div class="belief-grid">
+    <div class="belief-card bc-1">
+      <div class="belief-label">Belief 1</div>
+      <div class="belief-name">Pain</div>
+      <div class="belief-q">"Yeah, that part isn't working."</div>
+      <div class="belief-cue">Surface with: "Do you like those results?"</div>
+    </div>
+    <div class="belief-card bc-2">
+      <div class="belief-label">Belief 2</div>
+      <div class="belief-name">Doubt</div>
+      <div class="belief-q">"I've tried figuring it out myself."</div>
+      <div class="belief-cue">Surface with: "Why not keep doing it that way?"</div>
+    </div>
+    <div class="belief-card bc-3">
+      <div class="belief-label">Belief 3</div>
+      <div class="belief-name">Cost</div>
+      <div class="belief-q">"It's costing me more to stay stuck."</div>
+      <div class="belief-cue">Surface with: "What's that costing you monthly?"</div>
+    </div>
+    <div class="belief-card bc-4">
+      <div class="belief-label">Belief 4</div>
+      <div class="belief-name">Desire</div>
+      <div class="belief-q">"I want to hit $50K months."</div>
+      <div class="belief-cue">Surface with: "What does success look like in 6 months?"</div>
+    </div>
+    <div class="belief-card bc-5">
+      <div class="belief-label">Belief 5</div>
+      <div class="belief-name">Responsibility</div>
+      <div class="belief-q">"I need to make a change."</div>
+      <div class="belief-cue">Surface with: "Is this a nice-to-have or a must?"</div>
+    </div>
+  </div>
+
+  <div class="gate-box" style="margin-top:20px;">
+    <div class="gate-title">Pitch Gate Ruling</div>
+    <div class="gate-row">
+      <div class="gate-count" style="color:var(--red);">0–2</div>
+      <div>Stay in discovery. They haven't bought the problem. Go back to consequence questions.</div>
+    </div>
+    <div class="gate-row">
+      <div class="gate-count" style="color:var(--yellow);">3–4</div>
+      <div>Transition to pitch. Good probability of close. Use transition language below.</div>
+    </div>
+    <div class="gate-row">
+      <div class="gate-count" style="color:var(--green);">5</div>
+      <div>High close probability. Transition now. Don't over-discover.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — TRANSITION
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-blue">4</div>
+    <div class="section-title-wrap">
+      <h2>Transition Language</h2>
+      <div class="section-tag">Bridge from discovery to pitch · 30 seconds</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-blue">Template</div>
+    <div class="script-line">
+      "That's really all I needed to hear. Based on everything you've shared with me, I do think the Insiders program can help you [their North Star goal]. If it would help, I can walk you through exactly how we'd solve [their top pain] — and you can decide if it makes sense. Sound good?"
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title ct-green">DFY Upgrade Read (Hormozi offer framing)</div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:10px;">
+      After transition — if they said "I don't have time to implement" or "I want this done fast" during discovery, insert:
+    </p>
+    <div class="script-line green">
+      "Before I walk you through the Insiders program — based on what you've told me about [their situation], we also have a done-for-you option where Jay and the team build the entire system for you. I want to show you both so you can decide what makes more sense."
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+      ⚡ <strong style="color:var(--text);">Feb Pattern Fix:</strong> This is the DFY upsell window you missed.
+      Don't wait until after they say no to Insiders. Introduce the option at the transition.
+    </p>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 5 — THE PITCH (P-P-S)
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-purple">5</div>
+    <div class="section-title-wrap">
+      <h2>The Pitch — P·P·S Framework</h2>
+      <div class="section-tag">Promise → Process → Structure · 8–10 minutes</div>
+    </div>
+  </div>
+
+  <!-- PROMISE -->
+  <div class="card">
+    <div class="card-title ct-purple">① Promise — Name It. Outcome. Timeline.</div>
+    <div class="script-line purple">
+      "This is the Insiders Program 2.0. It's designed to help you go from [their current state] to [their North Star goal] within 90 days — using a cold email system that runs whether you're on the phone or not."
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="card">
+    <div class="card-title ct-purple">② Process — 4 Pillars · Feature → SO THAT YOU CAN → WHICH MEANS TO YOU</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pillar</th>
+          <th>Feature</th>
+          <th>So That You Can</th>
+          <th>Which Means To You</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Done-for-you cold email build</td>
+          <td>Launch outbound in week 1</td>
+          <td>You're not stuck in tech hell for 3 months</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td>10,000 verified leads (your ICP)</td>
+          <td>Target your exact buyer</td>
+          <td>Every email goes to a real potential client</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Weekly live coaching calls</td>
+          <td>Get real-time feedback on campaigns</td>
+          <td>You never have to guess what to fix</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td>Software vault + Skool community</td>
+          <td>Access 700M leads + tool discounts</td>
+          <td>Your lead pool never runs out</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="script-line purple" style="margin-top:14px;">
+      "What this means for you specifically is [mirror their pain from discovery]. Instead of [what they're currently doing], you're going to have a system that runs in the background and books meetings for you."
+    </div>
+  </div>
+
+  <!-- STRUCTURE -->
+  <div class="card">
+    <div class="card-title ct-blue">③ Structure — How They Actually Receive Value</div>
+    <div class="script-line">
+      "Here's how it works in practice: Day one, you get a 1-on-1 kickoff call. Week one, a dedicated strategist builds your entire cold email setup — domains, mailboxes, copy. By week two, you're live and getting replies. From there, you have weekly group coaching and Slack access so you're never guessing."
+    </div>
+    <div class="script-line green">
+      "And you also get lifetime access — so there's no subscription, no expiry date, no retainer trap. One investment, keep it forever."
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 6 — OFFER STACK
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-green">6</div>
+    <div class="section-title-wrap">
+      <h2>LGJ Offer Stack</h2>
+      <div class="section-tag">Know which tier to pitch based on their signals</div>
+    </div>
+  </div>
+
+  <div class="offer-grid">
+    <div class="offer-card oc-entry">
+      <div class="offer-tier" style="color:var(--green);">Entry</div>
+      <div class="offer-name">Lead-Gen Machine</div>
+      <div class="offer-price" style="color:var(--green);">$97</div>
+      <ul class="offer-list">
+        <li>DNS + mailbox warm-up</li>
+        <li>10K Apollo leads</li>
+        <li>AI-written 3-step sequence</li>
+        <li>Mini-course + Skool access</li>
+        <li>14-day guarantee</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">
+        Pitch when: "I just want to test this" or budget &lt; $500
+      </div>
+    </div>
+    <div class="offer-card oc-core">
+      <div class="offer-tier" style="color:var(--accent);">Core · Lead Offer</div>
+      <div class="offer-name">Insiders Program 2.0</div>
+      <div class="offer-price" style="color:var(--accent);">$2,000</div>
+      <ul class="offer-list">
+        <li>Lifetime 100+ hr course access</li>
+        <li>DFY build + list + copy + CRM</li>
+        <li>700M lead software vault</li>
+        <li>Weekly live coaching + Slack</li>
+        <li>14-day watch &amp; refund guarantee</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">
+        Pitch when: $5K–$80K/mo revenue, stuck on referrals
+      </div>
+    </div>
+    <div class="offer-card oc-premium">
+      <div class="offer-tier" style="color:var(--purple);">Premium · DFY</div>
+      <div class="offer-name">Custom Build Out</div>
+      <div class="offer-price" style="color:var(--purple);">$10K–$30K</div>
+      <ul class="offer-list">
+        <li>Jay personally builds the engine</li>
+        <li>Full funnel build</li>
+        <li>12-month Slack/Zoom support</li>
+        <li>Success guarantee</li>
+        <li>$30K MRR in 90 days typical</li>
+      </ul>
+      <div style="margin-top:12px;font-size:11px;color:var(--muted);">
+        Pitch when: "Just do it for me," funded, or "need it working in 30 days"
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title ct-blue">Price Anchoring Script — Insiders at $2,000</div>
+    <div class="script-line">
+      "The investment is $2,000 — not monthly, not a retainer. Lifetime access to everything: the course, the done-for-you build, the software vault, weekly coaching, and both communities. Most clients book their first five to ten calls in the first 30 days. At your price point, that covers the investment and then some. Does that feel doable?"
+    </div>
+    <div class="card-title ct-purple" style="margin-top:18px;">Paid-In-Full Close</div>
+    <div class="script-line purple">
+      "If you're ready to move forward today, we do have a paid-in-full discount plus some bonuses I can include. Want me to walk you through what that looks like?"
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 7 — TIE-DOWN
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-yellow">7</div>
+    <div class="section-title-wrap">
+      <h2>Tie-Down Sequence</h2>
+      <div class="section-tag">Execute after pitch · Before price · Every time</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <ul class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Certainty Check</strong>
+          <p>
+            <em style="color:#fde68a;">"Based on what we've covered — do you feel this can actually get you to [their North Star goal]?"</em>
+            <br/>Wait for a yes. Silence if needed. Do not bail them out.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Verbalize the Why</strong>
+          <p>
+            <em style="color:#fde68a;">"What specifically makes you feel that way?"</em>
+            <br/>Gets them to sell themselves. Their answer = your close language.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Investment Statement</strong>
+          <p>
+            <em style="color:#fde68a;">"The investment to make this happen is $2,000 paid in full — or we have a two-pay option at $1,100 each."</em>
+            <br/>State it matter-of-factly. Do not apologize. Do not add fluff.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Decision Ask — Say it once, shut up</strong>
+          <p>
+            <em style="color:#fde68a;">"What would you like to do next?"</em>
+            <br/>The first person to speak after this question loses. It won't be you.
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div class="alert" style="margin-top:16px;margin-bottom:0;">
+      <div class="alert-title">Tie-Down Rule</div>
+      <p>
+        If they hesitate on step 1 certainty check — <strong>do not present price.</strong>
+        Go back to discovery: "Help me understand what's making you unsure — is it the approach or something about your situation?"
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 8 — OBJECTION HANDLING
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-red">8</div>
+    <div class="section-title-wrap">
+      <h2>Objection Handling</h2>
+      <div class="section-tag">Cushion → Clarify → Isolate → Reframe → Close</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title ct-red">The 5-Step Framework — Run It Every Time</div>
+    <table>
+      <thead><tr><th>Step</th><th>Purpose</th><th>Language</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Cushion</strong></td><td>Lower defenses</td><td>"Totally hear you." / "Fair question." / "Makes sense you'd feel that way."</td></tr>
+        <tr><td><strong>2. Clarify</strong></td><td>Find the real concern</td><td>"When you say [X], what do you mean exactly?"</td></tr>
+        <tr><td><strong>3. Isolate</strong></td><td>Confirm it's the only blocker</td><td>"Aside from [X], is there anything else holding you back?"</td></tr>
+        <tr><td><strong>4. Reframe</strong></td><td>Shift perspective or identity</td><td>See specific scripts below</td></tr>
+        <tr><td><strong>5. Close</strong></td><td>Move to next step</td><td>"Does that address it, or is there something else?"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OBJECTION: TOO EXPENSIVE -->
+  <div class="objection-block">
+    <div class="obj-header">"That's too expensive."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Diagnose</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "I hear you — let me ask, if money wasn't the issue at all, would you be confident this is the right fit?"
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin:8px 0 14px 80px;">
+        If YES → it's not a money issue, it's a belief issue. Address the real concern.
+        <br/>If NO → they're not sold on the solution. Return to discovery.
+      </div>
+      <div class="obj-step">
+        <div class="obj-step-label">Reframe</div>
+        <div class="script-line red" style="margin:0;flex:1">
+          "So it sounds like it's not really about the $2,000 — what else is missing for you to feel fully confident?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Cost of Inaction</div>
+        <div class="script-line yellow" style="margin:0;flex:1">
+          "You mentioned this is costing you around [their number] every month. If nothing changes in the next six months, that's [math]. The $2,000 pays for itself on the first new client. Does that math land for you?"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTION: THINK ABOUT IT -->
+  <div class="objection-block">
+    <div class="obj-header">"I need to think about it."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Clarify</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "Makes sense. When you say think about it — what specifically are you weighing?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Isolate</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "Is there anything else besides that holding you back?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Reframe</div>
+        <div class="script-line red" style="margin:0;flex:1">
+          "Here's what I've found — 'thinking about it' usually means something's still unclear. What would need to be true for this to be a clear yes?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Identity</div>
+        <div class="script-line purple" style="margin:0;flex:1">
+          "You know what 'thinking about it' really is? It's delay dressed up as wisdom. You told me you've been dealing with this for [X months]. What's one more month of the same results worth to you?"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTION: PARTNER -->
+  <div class="objection-block">
+    <div class="obj-header">"I need to talk to my partner / spouse."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Clarify</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "I respect that — big decisions deserve alignment. Out of curiosity, what input are you expecting from them?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Isolate</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "If they give you the thumbs-up — are you personally a yes?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Reframe</div>
+        <div class="script-line purple" style="margin:0;flex:1">
+          "The fastest way to show them ROI is getting started while the slot's available. Want to loop them in right now, or secure your spot and surprise them with results?"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTION: BURNED BEFORE -->
+  <div class="objection-block">
+    <div class="obj-header">"I've been burned before / tried programs that didn't work."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Cushion</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "That's fair — and honestly, most people in your position have. What happened with that experience?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Reframe</div>
+        <div class="script-line red" style="margin:0;flex:1">
+          "Here's how I think about it: a bad relationship doesn't mean stay single forever — it means choose better next time. What would make this feel different for you?"
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">Proof</div>
+        <div class="script-line green" style="margin:0;flex:1">
+          "I can share a couple of case studies of people who felt exactly the same and what they did in the first 30 days. Would that help?"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTION: I'LL FIGURE IT OUT -->
+  <div class="objection-block">
+    <div class="obj-header">"I'll figure it out myself / DIY."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Negative Q</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "Makes sense. Why not keep doing it the way you are now?"
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin:8px 0 14px 80px;">
+        Let them answer. Then:
+      </div>
+      <div class="obj-step">
+        <div class="obj-step-label">Follow-up</div>
+        <div class="script-line yellow" style="margin:0;flex:1">
+          "So if that approach isn't getting you to [goal] — what makes you think more of the same will work?"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTION: NO TIME -->
+  <div class="objection-block">
+    <div class="obj-header">"I don't have time."</div>
+    <div class="obj-body">
+      <div class="obj-step">
+        <div class="obj-step-label">Reframe</div>
+        <div class="script-line" style="margin:0;flex:1">
+          "Totally hear you — and that's actually why this is built the way it is. The DFY build means our team does the heavy lifting in week one. You don't implement it — we do. You just review and approve."
+        </div>
+      </div>
+      <div class="obj-step" style="margin-top:12px;">
+        <div class="obj-step-label">DFY Bridge</div>
+        <div class="script-line green" style="margin:0;flex:1">
+          "And if you truly want zero time commitment — the custom done-for-you build means Jay and the team handle literally everything. Is bandwidth the main thing that's held you back from doing this before?"
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 9 — IDENTITY REFRAMES
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-purple">9</div>
+    <div class="section-title-wrap">
+      <h2>Identity Reframes</h2>
+      <div class="section-tag">Jeremy Miner NEPQ · Use for Level 3–4 objections</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">
+      Use these when the objection is really about how they see themselves — not the product.
+    </p>
+    <table>
+      <thead><tr><th>Trigger</th><th>Reframe</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>"I'm not sure I can follow through."</strong></td>
+          <td class="script-line" style="margin:0;display:block;border-left:none;background:none;padding:0;">
+            "The fact that you're still on this call and being honest about that tells me something different. People who can't follow through don't worry about follow-through."
+          </td>
+        </tr>
+        <tr>
+          <td><strong>"I'm just not the type who does these programs."</strong></td>
+          <td class="script-line" style="margin:0;display:block;border-left:none;background:none;padding:0;">
+            "What type of person do you want to be? Because the results you're after require a different version of you than the one who's been stuck on referrals for [X months]."
+          </td>
+        </tr>
+        <tr>
+          <td><strong>"Maybe in a few months."</strong></td>
+          <td class="script-line" style="margin:0;display:block;border-left:none;background:none;padding:0;">
+            "What's happening in a few months that isn't happening right now? And what changes in your situation between now and then?"
+          </td>
+        </tr>
+        <tr>
+          <td><strong>"What if I fail?"</strong></td>
+          <td class="script-line" style="margin:0;display:block;border-left:none;background:none;padding:0;">
+            "What does failing look like specifically? Because you already have a 14-day guarantee — worst case you get a refund and keep everything you learn in week one."
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 10 — RED FLAGS / WALK AWAY
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-red">10</div>
+    <div class="section-title-wrap">
+      <h2>When to Walk Away</h2>
+      <div class="section-tag">Not every call should close · Know the signals</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>Signal</th><th>What It Means</th><th>Exit Line</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Third "think about it" with no new info</td>
+          <td>Stalling indefinitely</td>
+          <td>"I want to respect your time. If you decide you're ready, reach out."</td>
+        </tr>
+        <tr>
+          <td>Refuses to share financial reality</td>
+          <td>Not serious or hiding something</td>
+          <td>"Sounds like timing isn't right. Let's reconnect when it makes sense."</td>
+        </tr>
+        <tr>
+          <td>Constant external blame (economy, luck)</td>
+          <td>Victim mindset — won't execute</td>
+          <td>Do not chase. Do not follow up. They won't implement.</td>
+        </tr>
+        <tr>
+          <td>Hostile or aggressive tone</td>
+          <td>Not a fit</td>
+          <td>"I appreciate your time — sounds like this isn't the right match. Best of luck."</td>
+        </tr>
+        <tr>
+          <td>Call crosses 55+ minutes in discovery</td>
+          <td>Rabbit hole — you lost frame</td>
+          <td>Reset: "I want to be mindful of your time — let me pull this back. Based on what you've shared, here's where I think we are..."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ══════════════════════════════════════
+     SECTION 11 — QUICK REFERENCE
+══════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num num-blue">11</div>
+    <div class="section-title-wrap">
+      <h2>Quick Reference Cheatsheet</h2>
+      <div class="section-tag">Print or open on second screen during calls</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="mono">CALL FLOW
+│
+├─ [0] PRE-CALL — Review lead. Set tone: calm + curious.
+│
+├─ [1] OPEN — ≤2 min rapport → Frame the call
+│   └─ "Here's how these 45 minutes work..."
+│
+├─ [2] DISCOVERY — 20-25 min
+│   ├─ North Star → "What does success look like in 3-6 months?"
+│   ├─ Situation  → "Walk me through how you currently get clients."
+│   ├─ Problem    → "Do you like those results?"
+│   ├─ Doubt      → "Why not keep doing it that way?"
+│   ├─ Cost       → "What's that costing you monthly?"
+│   ├─ Consequence→ "What happens if nothing changes in 12 months?"
+│   ├─ Desire     → "What does life look like when this is solved?"
+│   └─ Commit     → "Nice-to-have or a must right now?"
+│
+├─ [3] GATE — 3-4 of 5 Buying Beliefs confirmed before pitching?
+│   └─ Pain ✓ / Doubt ✓ / Cost ✓ / Desire ✓ / Responsibility ✓
+│
+├─ [4] TRANSITION — "Based on what you've shared, I think we can help..."
+│   └─ DFY flag: Did they say "no time" or "do it for me"? → Mention both tiers
+│
+├─ [5] PITCH — P·P·S
+│   ├─ Promise  → Name + Outcome + Timeline
+│   ├─ Process  → 4 Pillars (Feature → So That → Which Means)
+│   └─ Structure→ How delivery works
+│
+├─ [6] OFFER — $97 / $2K Insiders / $10-30K DFY (read signals)
+│
+├─ [7] TIE-DOWN
+│   ├─ "Do you feel this can get you to [goal]?" → Wait.
+│   ├─ "What makes you feel that way?"
+│   ├─ "The investment is $2,000..."
+│   └─ "What would you like to do next?" → Silence.
+│
+└─ [8] OBJECTIONS — Cushion → Clarify → Isolate → Reframe → Close
+    ├─ "Too expensive"   → Logistics vs Uncertainty → Cost of inaction
+    ├─ "Think about it" → "What would make this a clear yes?"
+    ├─ "My partner"     → "If they say yes, are you personally a yes?"
+    ├─ "Burned before"  → Bad boyfriend reframe + 14-day guarantee
+    └─ "No time"        → DFY bridge + "we do the work in week 1"</div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title ct-yellow">Ian's March 2026 Targets</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px;">
+      <div style="text-align:center;padding:20px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);">
+        <div style="font-size:2rem;font-weight:900;color:var(--accent);">$70K</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">Revenue Target</div>
+      </div>
+      <div style="text-align:center;padding:20px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);">
+        <div style="font-size:2rem;font-weight:900;color:var(--green);">$55K</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px;">New Cash Target</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-size:13px;color:var(--muted);">
+      <strong style="color:var(--text);">Reverse math:</strong>
+      At $2K/close avg → 28 closes needed for $55K new cash.
+      At 30% close rate → need 93 calls.
+      At 3 calls/day → hit it in ~31 working days.
+      <br/><br/>
+      <strong style="color:var(--text);">Focus:</strong> Don't just book more calls. Close the calls you already have.
+      February showed the conversion gap is in discovery depth and tie-down — not call volume.
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <p>Built by Scout · LGJ Sales Team · March 2026</p>
+  <p style="margin-top:6px;">Synthesized from Mason Church · Jeremy Miner · Cole Gordon · Alex Hormozi · Tony Robbins</p>
+</div>
+
+</div>
+</body>
+</html>

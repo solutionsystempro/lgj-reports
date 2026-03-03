@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ian Kirk — Monthly Reflection | February 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #181c27;
+      --surface2: #1e2333;
+      --border: #2a2f45;
+      --accent: #4f8ef7;
+      --accent2: #7c5cfc;
+      --green: #22d3a0;
+      --red: #f05e5e;
+      --yellow: #f5a623;
+      --text: #e8ecf5;
+      --text2: #9aa3c2;
+      --text3: #6b7494;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 40px 20px 80px;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      border-radius: 16px;
+      background: linear-gradient(135deg, #1a1f35 0%, #232a45 60%, #1e2550 100%);
+      border: 1px solid var(--border);
+      padding: 48px 48px 40px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(79,142,247,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 200px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: rgba(79,142,247,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(79,142,247,0.3);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .header h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-sub {
+      color: var(--text2);
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .header-stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 14px 20px;
+      flex: 1;
+      min-width: 130px;
+    }
+
+    .header-stat .hs-label {
+      font-size: 11px;
+      color: var(--text3);
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .header-stat .hs-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .header-stat .hs-delta {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .section-num {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* ── TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 28px;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0 16px 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th:not(:first-child) { text-align: right; }
+
+    .data-table td {
+      padding: 12px 16px 12px 0;
+      font-size: 14px;
+      color: var(--text2);
+      border-bottom: 1px solid rgba(42,47,69,0.5);
+      vertical-align: middle;
+    }
+
+    .data-table td:not(:first-child) { text-align: right; }
+
+    .data-table td:first-child {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .val-main {
+      font-weight: 700;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .val-green { color: var(--green); font-weight: 600; font-size: 13px; }
+    .val-neutral { color: var(--text2); font-size: 13px; }
+
+    .sub-heading {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+
+    .na-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.05);
+      color: var(--text3);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* ── TARGETS BOX ── */
+    .target-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .target-card {
+      flex: 1;
+      min-width: 180px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .target-card .tc-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .target-card .tc-target {
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 6px;
+    }
+
+    .target-card .tc-actual {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .target-card .tc-badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: rgba(34,211,160,0.12);
+      color: var(--green);
+      border: 1px solid rgba(34,211,160,0.25);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── REFLECTION BLOCKS ── */
+    .reflect-block {
+      margin-bottom: 28px;
+    }
+
+    .reflect-block:last-child { margin-bottom: 0; }
+
+    .reflect-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .reflect-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-green { background: var(--green); box-shadow: 0 0 8px rgba(34,211,160,0.5); }
+    .dot-red { background: var(--red); box-shadow: 0 0 8px rgba(240,94,94,0.5); }
+    .dot-yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(245,166,35,0.5); }
+
+    .reflect-label h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .reflect-body p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .reflect-body p:last-child { margin-bottom: 0; }
+
+    .reflect-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .learn-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .learn-card:nth-child(2) { border-left-color: #7c5cfc; }
+    .learn-card:nth-child(3) { border-left-color: #22d3a0; }
+    .learn-card:nth-child(4) { border-left-color: #f5a623; }
+    .learn-card:nth-child(5) { border-left-color: #f05e5e; }
+    .learn-card:nth-child(6) { border-left-color: #22d3a0; }
+
+    .learn-card .lc-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .learn-card .lc-body {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    .learn-card .lc-quote {
+      display: block;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 12px;
+      margin: 6px 0;
+      padding: 6px 10px;
+      border-left: 2px solid rgba(79,142,247,0.4);
+      background: rgba(79,142,247,0.05);
+      border-radius: 0 6px 6px 0;
+    }
+
+    @media (max-width: 640px) {
+      .learn-grid { grid-template-columns: 1fr; }
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    /* ── MARCH TARGETS ── */
+    .march-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .march-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .march-card.accent-card {
+      background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(124,92,252,0.1));
+      border-color: rgba(79,142,247,0.3);
+    }
+
+    .march-card .mc-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text3);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .march-card .mc-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .march-card.accent-card .mc-value {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── REVERSE ENGINEERING ── */
+    .calc-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .calc-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .calc-chain {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .calc-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-align: center;
+    }
+
+    .calc-step .cs-label {
+      font-size: 10px;
+      color: var(--text3);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
+    }
+
+    .calc-step .cs-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .calc-arrow {
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .calc-insight {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .calc-insight strong { color: var(--text); }
+
+    .highlight-box {
+      background: rgba(34,211,160,0.07);
+      border: 1px solid rgba(34,211,160,0.2);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .highlight-box strong { color: var(--green); }
+
+    /* ── TRAINING ── */
+    .training-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .training-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .training-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .ti-blue { background: rgba(79,142,247,0.15); }
+    .ti-purple { background: rgba(124,92,252,0.15); }
+    .ti-green { background: rgba(34,211,160,0.15); }
+    .ti-yellow { background: rgba(245,166,35,0.15); }
+
+    .training-item .ti-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .training-item .ti-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--text3);
+      font-size: 12px;
+    }
+
+    @media print {
+      body { background: #fff; color: #111; padding: 0; }
+      .wrapper { max-width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .header { padding: 32px 24px; }
+      .section { padding: 28px 24px; }
+      .march-grid { grid-template-columns: 1fr; }
+      .header-stats { gap: 12px; }
+      .calc-chain { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#0f1117;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">
+  <div style="background:#181c27;border:1px solid #2a2f45;border-radius:16px;padding:48px 40px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.5);">
+    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(79,142,247,0.15),rgba(124,92,252,0.15));border:1px solid rgba(79,142,247,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px;">🔒</div>
+    <h2 style="font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.3px;">Private Document</h2>
+    <p style="font-size:13px;color:#6b7494;margin-bottom:28px;line-height:1.6;">Enter the access password to continue.</p>
+    <input id="pw-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;background:#0f1117;border:1px solid #2a2f45;border-radius:8px;padding:13px 16px;color:#e8ecf5;font-size:14px;outline:none;margin-bottom:12px;font-family:'Inter',sans-serif;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(79,142,247,0.5)'" onblur="this.style.borderColor='#2a2f45'" />
+    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#4f8ef7,#7c5cfc);border:none;border-radius:8px;padding:13px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.3px;">Unlock →</button>
+    <p id="pw-err" style="display:none;font-size:12px;color:#f05e5e;margin-top:12px;font-weight:500;">Incorrect password. Try again.</p>
+  </div>
+</div>
+<script>
+  (function(){
+    if(localStorage.getItem('lgj_v1')==='ok'){document.getElementById('gate').style.display='none';}
+    document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
+    setTimeout(function(){document.getElementById('pw-input').focus();},100);
+  })();
+  function tryUnlock(){
+    if(btoa(document.getElementById('pw-input').value)==='QXNzYXNzaW4='){
+      localStorage.setItem('lgj_v1','ok');
+      document.getElementById('gate').style.display='none';
+    } else {
+      document.getElementById('pw-err').style.display='block';
+      document.getElementById('pw-input').value='';
+      document.getElementById('pw-input').focus();
+    }
+  }
+</script>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">Monthly Reflection</div>
+    <h1>Ian Kirk — <span>February 2026</span></h1>
+    <div class="header-sub">Sales Closer · Lead Gen Jay · Reviewed with Mason Church</div>
+    <div class="header-stats">
+      <div class="header-stat">
+        <div class="hs-label">Revenue</div>
+        <div class="hs-value">$<span class="counter" data-value="81369" data-fmt="comma">81,369</span></div>
+        <div class="hs-delta">↑ 31% vs January</div>
+      </div>
+      <div class="header-stat">
+        <div class="hs-label">Cash Collected</div>
+        <div class="hs-value">$<span class="counter" data-value="54668" data-fmt="comma">54,668</span></div>
+        <div class="hs-delta">↑ $14k vs target</div>
+      </div>
+      <div class="header-stat">
+        <div class="hs-label">Rev / Call</div>
+        <div class="hs-value">$<span class="counter" data-value="1695" data-fmt="comma">1,695</span></div>
+        <div class="hs-delta">↑ 138% vs January</div>
+      </div>
+      <div class="header-stat">
+        <div class="hs-label">Close Rate</div>
+        <div class="hs-value"><span class="counter" data-value="90" data-fmt="plain">90</span>.6%</div>
+        <div class="hs-delta">29 units / 32 offers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YEAR 1 CONTEXT STRIP -->
+  <div style="background: linear-gradient(135deg, rgba(79,142,247,0.07), rgba(124,92,252,0.07)); border: 1px solid rgba(79,142,247,0.2); border-radius: 14px; padding: 22px 32px; margin-bottom: 20px; display: flex; align-items: center; gap: 0; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; text-align: center; padding: 8px 24px 8px 0; border-right: 1px solid rgba(79,142,247,0.15);">
+      <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.9px; color: var(--text3); margin-bottom: 5px;">Year 1 Revenue</div>
+      <div style="font-size: 26px; font-weight: 800; color: #fff;">$500K</div>
+      <div style="font-size: 11px; color: var(--accent); font-weight: 600; margin-top: 2px;">12 months</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; text-align: center; padding: 8px 24px; border-right: 1px solid rgba(79,142,247,0.15);">
+      <div style="font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.9px; color: var(--text3); margin-bottom: 5px;">Month 13 Alone</div>
+      <div style="font-size: 26px; font-weight: 800; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$81.4K</div>
+      <div style="font-size: 11px; color: var(--green); font-weight: 600; margin-top: 2px;">February 2026</div>
+    </div>
+    <div style="flex: 2; min-width: 220px; padding: 8px 0 8px 24px;">
+      <div style="font-size: 13px; color: var(--text2); line-height: 1.75;">February alone is <strong style="color: var(--text);">~20% of total Year 1 revenue</strong> — in a single month. At this run rate, Year 2 is on pace for <strong style="color: var(--green);">~$976K</strong>, nearly doubling the entire first year.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: DATA -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">1</div>
+      <div class="section-title">Total Data for the Month</div>
+    </div>
+
+    <div class="sub-heading">Closers</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>February</th>
+          <th>January</th>
+          <th>Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Scheduled Calls</td>
+          <td><span class="val-main">61</span></td>
+          <td><span class="val-neutral">87</span></td>
+          <td><span style="color:var(--text3); font-size:13px;">−30% (travel)</span></td>
+        </tr>
+        <tr>
+          <td>Live Calls</td>
+          <td><span class="val-main">48</span></td>
+          <td><span class="val-neutral">~51</span></td>
+          <td><span class="val-neutral">—</span></td>
+        </tr>
+        <tr>
+          <td>Units Sold</td>
+          <td><span class="val-main">29</span></td>
+          <td><span class="val-neutral">—</span></td>
+          <td><span class="val-neutral">—</span></td>
+        </tr>
+        <tr>
+          <td>Revenue</td>
+          <td><span class="val-main">$81,369.50</span></td>
+          <td><span class="val-neutral">$62,000</span></td>
+          <td><span class="val-green">↑ +31%</span></td>
+        </tr>
+        <tr>
+          <td>New Cash Collected</td>
+          <td><span class="val-main">$54,667.60</span></td>
+          <td><span class="val-neutral">—</span></td>
+          <td><span class="val-neutral">—</span></td>
+        </tr>
+        <tr>
+          <td>Show Rate</td>
+          <td><span class="val-main">78.7%</span></td>
+          <td><span class="val-neutral">59%</span></td>
+          <td><span class="val-green">↑ +19.7 pts</span></td>
+        </tr>
+        <tr>
+          <td>Close Rate</td>
+          <td><span class="val-main">90.6%</span></td>
+          <td><span class="val-neutral">—</span></td>
+          <td><span class="val-neutral">—</span></td>
+        </tr>
+        <tr>
+          <td>Revenue / Call</td>
+          <td><span class="val-main">$1,695.20</span></td>
+          <td><span class="val-neutral">$712</span></td>
+          <td><span class="val-green">↑ +138%</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Setters</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Metric</th><th>Value</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dials</td>
+          <td><span class="na-tag">N/A</span></td>
+          <td style="font-size:13px; color:var(--text3);">100/week SOP introduced mid-Feb — tracking begins March</td>
+        </tr>
+        <tr>
+          <td>DM Sets</td>
+          <td><span class="na-tag">N/A</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Phone Sets</td>
+          <td><span class="na-tag">N/A</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td># Upsell Sets Closed</td>
+          <td><span class="na-tag">N/A</span></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: TARGETS -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">2</div>
+      <div class="section-title">What Were Your Targets?</div>
+    </div>
+    <div class="target-row">
+      <div class="target-card">
+        <div class="tc-label">Revenue Target</div>
+        <div class="tc-target">Target: ~$60k</div>
+        <div class="tc-actual">$81,369</div>
+        <div class="tc-badge">↑ +35% vs target</div>
+      </div>
+      <div class="target-card">
+        <div class="tc-label">New Cash Target</div>
+        <div class="tc-target">Target: ~$40k</div>
+        <div class="tc-actual">$54,668</div>
+        <div class="tc-badge">↑ +37% vs target</div>
+      </div>
+      <div class="target-card">
+        <div class="tc-label">Team Revenue Target</div>
+        <div class="tc-target">Full team: $180k</div>
+        <div class="tc-actual">$45k / day 9</div>
+        <div class="tc-badge">On pace at day 9</div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text3); margin-top:12px; line-height:1.7;">The final week was the difference-maker. Feb 26 ($10,101) and Feb 27 ($18,004.60) added $28k in two days, pushing a good month into an exceptional one.</p>
+  </div>
+
+  <!-- SECTION 3: PERFORMANCE REFLECTION -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">3</div>
+      <div class="section-title">Performance Reflection</div>
+    </div>
+
+    <!-- What Worked -->
+    <div class="reflect-block">
+      <div class="reflect-label">
+        <div class="reflect-dot dot-green"></div>
+        <h3>What Worked Well</h3>
+      </div>
+      <div class="reflect-body">
+        <p>The headline stat this month is <strong>efficiency</strong>. January: 87 calls, $62k, $712/call. February: 48 calls, $81k, $1,695/call. Less than half the volume — 31% more revenue. That doesn't happen by accident. It's the result of compounding improvements across show rate, discovery quality, and offer delivery.</p>
+        <p>Show rate jumped from 59% to <strong>78.7%</strong> — nearly 20 points. Better lead quality, tighter pre-call framing, fewer no-shows burning the calendar.</p>
+        <p>The close rate of <strong>90.6% on offers made</strong> is elite. When Ian made an offer, he closed 9 out of 10. The work on discovery — understanding the prospect's situation before presenting a solution — is showing up directly in the numbers. Prospects are sold before the price comes out.</p>
+        <p>The standout call of the month was <strong>Daniel Fitzgerald</strong>. Ian stayed patient, stayed curious, never pushed, and when the prospect signaled he wanted DFY over a course, Ian pivoted cleanly and closed. Mason flagged it for the <strong>Winning Call Vault</strong> as a model performance. That call is the template.</p>
+        <p>February also happened <strong>during a relocation</strong>. Selling a vehicle, travel logistics, adjusting to a new environment — and Ian posted his best efficiency month. That speaks to the baseline level of professionalism being built.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- What Didn't Work -->
+    <div class="reflect-block">
+      <div class="reflect-label">
+        <div class="reflect-dot dot-red"></div>
+        <h3>What Did Not Work Well</h3>
+      </div>
+      <div class="reflect-body">
+        <p><strong>Volume was the constraint.</strong> 48 live calls is solid — but with $1,695/call, every extra slot is worth $1,695. January had 80+ scheduled calls. The months where volume meets efficiency are where $100k+ lives. Travel ate into availability, and that's understandable — but the opportunity cost is clear.</p>
+        <p>The <strong>Stefan S. call</strong> exposed a pattern that still needs to be eliminated: following the prospect down rabbit holes. When a call loses structure, there's a tendency to go with it rather than using a pivot question to regain control. The "ideal outcome" question exists specifically for this moment. It wasn't used, and the call dragged without ever finding a clear pain point to pitch against.</p>
+        <p><strong>Discovery still comes too early to the pitch.</strong> The early-month roleplay with Mason revealed a tendency to move to the solution before pain is fully established. Closed-ended questions box prospects in and shut them down. The Situation → Problem → Data → Rationale framework is the right structure — but it requires consistent reps to become automatic under live pressure.</p>
+        <p><strong>Proactive upselling was missed.</strong> Insiders clients from November–December were sitting at the 30–60 day mark — the exact window of maximum receptivity to a DFY upsell — with no systematic outreach. That's existing revenue left uncollected.</p>
+      </div>
+    </div>
+
+    <hr class="divider"/>
+
+    <!-- What Did You Learn -->
+    <div class="reflect-block">
+      <div class="reflect-label">
+        <div class="reflect-dot dot-yellow"></div>
+        <h3>What Did You Learn</h3>
+      </div>
+      <div class="learn-grid">
+
+        <div class="learn-card">
+          <div class="lc-title">🧠 Pain Before Price</div>
+          <div class="lc-body">A prospect who hasn't articulated their own problem doesn't feel urgency. A prospect who has — in their own words — is already half-convinced.<br><br>The <strong>Situation → Problem → Data → Rationale</strong> framework isn't optional. It's the architecture of every clean close.</div>
+        </div>
+
+        <div class="learn-card">
+          <div class="lc-title">💬 "Two-Truths" Questioning</div>
+          <div class="lc-body">After affirming what's working, ask:
+            <span class="lc-quote">"What would you want to improve about your lead gen if you could?"</span>
+            The prospect answers without ego and tells you exactly what to pitch. No confrontation. No hunting. They hand it to you.
+          </div>
+        </div>
+
+        <div class="learn-card">
+          <div class="lc-title">🎯 Rational Questions Create Doubt</div>
+          <div class="lc-body">Challenge the status quo without pressure:
+            <span class="lc-quote">"Why not just double down on conferences since they're working?"</span>
+            The prospect is forced to articulate the ceiling of their own strategy. They sell themselves on needing something different.
+          </div>
+        </div>
+
+        <div class="learn-card">
+          <div class="lc-title">📊 Quantify the Gap</div>
+          <div class="lc-body">Turn vague desires into specific numbers:
+            <span class="lc-quote">"How many more leads would you need per month to feel ready to hire a salesperson?"</span>
+            A specific number creates a measurable gap that Ian's service can fill precisely.
+          </div>
+        </div>
+
+        <div class="learn-card">
+          <div class="lc-title">🎭 Tone Is a Weapon</div>
+          <div class="lc-body">The Daniel Fitzgerald call proved it. Calm, curious, non-reactive energy disarms resistance better than any technique.<br><br>Mason flagged it for the <strong>Winning Call Vault</strong> — not because Ian said the right things, but because of <em>how</em> he said everything.</div>
+        </div>
+
+        <div class="learn-card">
+          <div class="lc-title">💰 The 30–60 Day Upsell</div>
+          <div class="lc-body">Implement a check-in text for all new Insiders clients at the 30–60 day mark to proactively offer the DFY build.<br><br>Don't wait for them to come back. <strong>The money is already in the pipeline — go get it.</strong></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: MARCH TARGETS -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">4</div>
+      <div class="section-title">Target for This Month (March 2026)</div>
+    </div>
+    <div class="march-grid">
+      <div class="march-card accent-card">
+        <div class="mc-label">Revenue</div>
+        <div class="mc-value">$70,000</div>
+      </div>
+      <div class="march-card accent-card">
+        <div class="mc-label">New Cash Collected</div>
+        <div class="mc-value">$55,000</div>
+      </div>
+      <div class="march-card accent-card">
+        <div class="mc-label">Commission (10%)</div>
+        <div class="mc-value">$5,500</div>
+      </div>
+    </div>
+    <p style="font-size:13px; color:var(--text3); margin-top:16px; line-height:1.7;">March is a stabilization month — Ian is fully settled, travel is done, calendar is open. $70k is a floor given February's $81k with half the potential volume. The real target is to validate that efficiency holds as volume scales. Hit $70k+ with 60+ live calls and this becomes the new baseline.</p>
+  </div>
+
+  <!-- SECTION 5: REVERSE ENGINEERING -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">5</div>
+      <div class="section-title">Reverse Engineering the Data</div>
+    </div>
+
+    <div class="sub-heading" style="margin-bottom:16px;">To hit $70,000 in revenue</div>
+
+    <div class="calc-block">
+      <div class="calc-title">February Benchmarks → March Requirements</div>
+      <div class="calc-chain">
+        <div class="calc-step">
+          <div class="cs-label">Revenue Target</div>
+          <div class="cs-value">$70k</div>
+        </div>
+        <div class="calc-arrow">÷</div>
+        <div class="calc-step">
+          <div class="cs-label">Rev / Call</div>
+          <div class="cs-value">$1,695</div>
+        </div>
+        <div class="calc-arrow">=</div>
+        <div class="calc-step">
+          <div class="cs-label">Live Calls</div>
+          <div class="cs-value">~42</div>
+        </div>
+        <div class="calc-arrow">÷</div>
+        <div class="calc-step">
+          <div class="cs-label">Show Rate</div>
+          <div class="cs-value">78.7%</div>
+        </div>
+        <div class="calc-arrow">=</div>
+        <div class="calc-step">
+          <div class="cs-label">Scheduled</div>
+          <div class="cs-value">~53</div>
+        </div>
+        <div class="calc-arrow">÷</div>
+        <div class="calc-step">
+          <div class="cs-label">Fill Rate</div>
+          <div class="cs-value">89.7%</div>
+        </div>
+        <div class="calc-arrow">=</div>
+        <div class="calc-step" style="border-color:rgba(79,142,247,0.4); background:rgba(79,142,247,0.08);">
+          <div class="cs-label">Slots Needed</div>
+          <div class="cs-value" style="color:var(--accent);">59</div>
+        </div>
+      </div>
+      <div class="calc-insight">
+        <strong>59 slots across 21 working days = 3 slots per day.</strong> February had 68 slots open with travel disruption. March has no travel, no relocation. There is zero reason not to have 70–80 slots open.
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Upside scenario:</strong> At 70 slots open using February's exact ratios → 70 × 89.7% = 63 scheduled → 63 × 78.7% = 50 live calls → 50 × $1,695 = <strong>$84,750 in revenue</strong> — $14k above target with no improvement in efficiency required.<br/><br/>
+      <strong>New cash path:</strong> At February's 67% cash-to-contract rate, $55k cash requires ~$82k in contracts. Payment plan collections from February's $81k in contracts will meaningfully close this gap — roughly $25–30k in trailing cash is already in the pipeline.
+    </div>
+  </div>
+
+  <!-- SECTION 6: TRAINING -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">6</div>
+      <div class="section-title">Studies &amp; Training Outside of Team Calls</div>
+    </div>
+    <div class="training-list">
+      <div class="training-item">
+        <div class="training-icon ti-blue">🎯</div>
+        <div>
+          <div class="ti-title">Weekly 1:1 Coaching with Mason Church</div>
+          <div class="ti-desc">Focused on the full discovery framework — Situation → Problem → Data → Rationale — with live roleplay reps on each stage. Each session targeted one specific weakness and drilled it until it became muscle memory.</div>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="training-icon ti-purple">📞</div>
+        <div>
+          <div class="ti-title">Self Call Reviews</div>
+          <div class="ti-desc">Reviewed Stefan S. (identified the rabbit hole pattern and missed "ideal outcome" pivot) and Daniel Fitzgerald (deconstructed the tone and energy that earned it a Winning Call Vault spot). Self-reviewing tape is the fastest path to closing the gap between who you are on calls and who you need to be.</div>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="training-icon ti-yellow">📖</div>
+        <div>
+          <div class="ti-title">Team Sales Training — Atomic Habits</div>
+          <div class="ti-desc">Completed Chapters 4–6 and 7–9 as part of the team training curriculum. Applying habit stacking and identity-based behavior concepts directly to the daily sales routine and the new 100 dials/week SOP.</div>
+        </div>
+      </div>
+      <div class="training-item">
+        <div class="training-icon ti-green">🏆</div>
+        <div>
+          <div class="ti-title">Winning Call Vault Study</div>
+          <div class="ti-desc">Using the Daniel Fitzgerald call as the benchmark for tone, pace, and energy. Listening back before high-stakes calls to re-anchor the approach that produced that outcome.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: YEAR TO DATE -->
+  <div class="section">
+    <div class="section-label">
+      <div class="section-num">7</div>
+      <div class="section-title">Career Totals — Since Joining LGJ</div>
+    </div>
+    <div class="march-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 0;">
+      <div class="march-card">
+        <div class="mc-label">First 3 Months</div>
+        <div class="mc-value" style="font-size: 24px; color: var(--text2);">$72K</div>
+        <div style="font-size: 11px; color: var(--text3); margin-top: 6px; font-weight: 500;">56 customers · ~$24K/mo avg</div>
+      </div>
+      <div class="march-card accent-card">
+        <div class="mc-label">Total Revenue</div>
+        <div class="mc-value" style="font-size: 28px;">$558,000</div>
+        <div style="font-size: 11px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 675% from starting pace</div>
+      </div>
+      <div class="march-card accent-card">
+        <div class="mc-label">Total Customers</div>
+        <div class="mc-value" style="font-size: 28px;">217</div>
+        <div style="font-size: 11px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 287% from first 3 months</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Ian Kirk · Lead Gen Jay · February 2026 Monthly Reflection · Coached by Mason Church
+  </div>
+
+</div>
+
+<script>
+  function animateNum(el, target, duration, fmt) {
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const val = Math.floor((1 - Math.pow(1 - p, 3)) * target);
+      el.textContent = fmt === 'comma' ? val.toLocaleString() : val;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !e.target.dataset.done) {
+        e.target.dataset.done = '1';
+        animateNum(e.target, parseInt(e.target.dataset.value), 1600, e.target.dataset.fmt);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.counter').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
