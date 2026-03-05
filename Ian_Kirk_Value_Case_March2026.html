@@ -323,6 +323,7 @@
     }
 
     .xlab.star { color: var(--blue); }
+    .xlab.live { color: var(--green); }
 
     .chart-foot {
       font-size: 12px;
@@ -330,6 +331,53 @@
       font-style: italic;
       padding-bottom: 24px;
       text-align: center;
+    }
+
+    .bar-mom {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0;
+      transition: opacity .4s ease .8s;
+      margin-top: 2px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .bar-mom.show { opacity: 1; }
+
+    .bar-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16,185,129,.12);
+      border: 1px solid rgba(16,185,129,.35);
+      color: var(--green);
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 999px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity .4s ease .8s;
+      white-space: nowrap;
+    }
+    .bar-live.show { opacity: 1; }
+    .bar-live-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .kpi-gold::before  { background: linear-gradient(90deg, var(--yellow), #f97316); }
+
+    .b-mar {
+      background: linear-gradient(180deg, #34d399, #10b981, #059669);
+      box-shadow: 0 0 24px rgba(16,185,129,.3);
     }
 
     /* ── METRIC GRID ── */
@@ -661,8 +709,8 @@
       <span class="live-dot"></span>
       Ian Kirk · Lead Gen Jay · March 2026
     </div>
-    <h1>13 Months.<br><em>The Full Picture.</em></h1>
-    <p class="hero-sub">From zero track record at Lead Gen Jay to $558K in revenue and 217 customers created. This is a performance case built on data, compounding growth, and deliberate loyalty.</p>
+    <h1>14 Months.<br><em>The Full Picture.</em></h1>
+    <p class="hero-sub">From zero track record at Lead Gen Jay to $568K in revenue and 218 customers created. This is a performance case built on data, compounding growth, and deliberate loyalty. Month 14 is already underway.</p>
     <div class="hero-kpis">
       <div class="kpi kpi-blue">
         <div class="kpi-label">Total Revenue Since Joining</div>
@@ -676,8 +724,13 @@
       </div>
       <div class="kpi kpi-purple">
         <div class="kpi-label">Close Rate · Since Oct '25</div>
-        <div class="kpi-value"><span id="ctr-cr">0</span><span style="font-size:18px;color:var(--muted);">%</span></div>
-        <div class="kpi-note">102 of 297 live calls</div>
+        <div class="kpi-value" id="ctr-cr" style="font-size:30px;font-weight:900;color:var(--text);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;">34.7%</div>
+        <div class="kpi-note">102 of 294 live calls · Oct '25–Mar '26</div>
+      </div>
+      <div class="kpi kpi-gold">
+        <div class="kpi-label">Peak Month · Feb 2026</div>
+        <div class="kpi-value">$81.4K</div>
+        <div class="kpi-note">↑ 238% vs first 3-month avg</div>
       </div>
     </div>
   </div>
@@ -691,7 +744,7 @@
       <div class="section-ico ico-blue">📈</div>
       <div class="section-hd-text">
         <h2>Revenue Trajectory</h2>
-        <div class="stag">Oct 2025 → Feb 2026 · Confirmed data points</div>
+        <div class="stag">Oct 2025 → Mar 2026 · Airtable confirmed · 5 consecutive months of growth</div>
       </div>
     </div>
 
@@ -699,33 +752,58 @@
       <div class="bars" id="chartBars">
         <div class="bar-group">
           <div class="bar-label-top" id="lbl-oct">$42.8K</div>
+          <div class="bar-mom" id="mom-oct">baseline</div>
           <div class="bar-body b-blue" id="b-oct" data-pct="52.6"></div>
         </div>
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-nov">~$56K</div>
-          <div class="bar-body b-ind" id="b-nov" data-pct="68.9"></div>
+          <div class="bar-label-top" id="lbl-nov">$54.4K</div>
+          <div class="bar-mom" id="mom-nov">+27% MoM</div>
+          <div class="bar-body b-ind" id="b-nov" data-pct="66.9"></div>
         </div>
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-dec">~$57K</div>
-          <div class="bar-body b-vio" id="b-dec" data-pct="70.0"></div>
+          <div class="bar-label-top" id="lbl-dec">$57.9K</div>
+          <div class="bar-mom" id="mom-dec">+7% MoM</div>
+          <div class="bar-body b-vio" id="b-dec" data-pct="71.2"></div>
         </div>
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-jan">$62K</div>
-          <div class="bar-body b-cyan" id="b-jan" data-pct="76.2"></div>
+          <div class="bar-label-top" id="lbl-jan">$62.3K</div>
+          <div class="bar-mom" id="mom-jan">+8% MoM</div>
+          <div class="bar-body b-cyan" id="b-jan" data-pct="76.6"></div>
         </div>
         <div class="bar-group">
           <div class="bar-label-top" id="lbl-feb">$81.4K</div>
+          <div class="bar-mom" id="mom-feb" style="color:var(--green);font-size:10px;">+31% MoM ★</div>
           <div class="bar-body b-star" id="b-feb" data-pct="100"></div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-label-top" id="lbl-mar" style="color:var(--green);">$10K</div>
+          <div class="bar-live" id="live-mar"><span class="bar-live-dot"></span>LIVE</div>
+          <div class="bar-body b-mar" id="b-mar" data-pct="12.3"></div>
         </div>
       </div>
       <div class="chart-xaxis">
-        <div class="xlab">Oct</div>
-        <div class="xlab">Nov</div>
-        <div class="xlab">Dec</div>
-        <div class="xlab">Jan</div>
-        <div class="xlab star">Feb ★</div>
+        <div class="xlab">Oct '25</div>
+        <div class="xlab">Nov '25</div>
+        <div class="xlab">Dec '25</div>
+        <div class="xlab">Jan '26</div>
+        <div class="xlab star">Feb '26 ★</div>
+        <div class="xlab live">Mar '26</div>
       </div>
-      <p class="chart-foot">Nov / Dec estimated from confirmed Oct–Feb total of $298,812. Oct, Jan, and Feb are exact figures.</p>
+      <p class="chart-foot">All figures confirmed from Airtable. March 2026 is partial — through Mar 3 only. Oct '25–Feb '26 total: $298,812.</p>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.2);border-radius:var(--r);padding:20px 24px;margin-top:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--green);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;flex-shrink:0;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s ease-in-out infinite;display:inline-block;"></span>
+        Month 14 · In Progress
+      </div>
+      <div style="flex:1;min-width:180px;font-size:13px;color:var(--muted2);line-height:1.7;">
+        March 2026 opened with a <strong style="color:var(--text);">$10,000 deal on the first working day.</strong> Five consecutive months of growth — the curve hasn't peaked.
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Mar Revenue · Day 1</div>
+        <div style="font-size:26px;font-weight:900;color:var(--green);">$10,000</div>
+      </div>
     </div>
   </div>
 
@@ -747,8 +825,8 @@
       </div>
       <div class="mc mc-b">
         <div class="mc-lbl">Close Rate · Since Oct '25</div>
-        <div class="mc-val">34.3%</div>
-        <div class="mc-delta">102 of 297 live calls</div>
+        <div class="mc-val">34.7%</div>
+        <div class="mc-delta">102 of 294 live calls</div>
       </div>
       <div class="mc mc-c">
         <div class="mc-lbl">Show Rate</div>
@@ -830,8 +908,20 @@
       </div>
     </div>
 
+    <div style="background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.22);border-radius:var(--r);padding:20px 26px;margin-bottom:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--green);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;flex-shrink:0;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s ease-in-out infinite;display:inline-block;"></span>
+        Month 14 · Mar 2026
+      </div>
+      <div style="flex:1;min-width:180px;font-size:13px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">$10K closed on Day 1.</strong> The opening deal of Month 14 matched the floor price Ian advocated to establish. The trajectory hasn't peaked.</div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;">Running Total</div>
+        <div style="font-size:26px;font-weight:900;color:var(--text);">$568K+</div>
+      </div>
+    </div>
+
     <div class="callout callout-blue">
-      From $24K/month in month 1–3 → $42K/month over Year 1 → <strong>$81K in a single month at month 13.</strong> The curve isn't leveling off — it's accelerating.
+      From $24K/month in months 1–3 → $42K/month over Year 1 → <strong>$81K in a single month at month 13</strong> → $10K deal on Day 1 of month 14. The curve isn't leveling off — it's accelerating.
     </div>
   </div>
 
@@ -1080,7 +1170,7 @@
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--yellow));"></div>
         <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:16px;">Ian Kirk — LGJ · Current Structure</div>
         <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;">High-Ticket Closer · 13 months · Proven</div>
-        <div style="font-size:12px;color:var(--muted2);margin-bottom:20px;">$558K career · $81K best month · 34.3% close rate</div>
+        <div style="font-size:12px;color:var(--muted2);margin-bottom:20px;">$568K career · $81K best month · 34.7% close rate</div>
 
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--border);">
@@ -1191,17 +1281,17 @@
     // ── Reset + animate hero counters ──
     const rev  = document.getElementById('ctr-rev');
     const cust = document.getElementById('ctr-cust');
-    const cr   = document.getElementById('ctr-cr');
-    rev.textContent = '$0'; cust.textContent = '0'; cr.textContent = '0';
-    animateNum(rev,  558, 1600, 'dollar-k');
-    animateNum(cust, 217, 1800, 'plain');
-    animateNum(cr,    34, 1400, 'pct');
+    rev.textContent = '$0'; cust.textContent = '0';
+    animateNum(rev,  568, 1600, 'dollar-k');
+    animateNum(cust, 218, 1800, 'plain');
 
     // ── Reset + animate bar chart ──
     const bars = document.querySelectorAll('.bar-body');
     const lbls = document.querySelectorAll('.bar-label-top');
     bars.forEach(b => { b.style.transition = 'none'; b.style.height = '0'; });
     lbls.forEach(l => l.classList.remove('show'));
+    document.querySelectorAll('.bar-mom').forEach(l => l.classList.remove('show'));
+    document.querySelectorAll('.bar-live').forEach(l => l.classList.remove('show'));
     requestAnimationFrame(() => requestAnimationFrame(() => {
       bars.forEach((bar, i) => {
         setTimeout(() => {
@@ -1209,7 +1299,11 @@
           bar.style.height = bar.dataset.pct + '%';
         }, i * 110 + 200);
       });
-      setTimeout(() => lbls.forEach(l => l.classList.add('show')), bars.length * 110 + 700);
+      setTimeout(() => {
+        lbls.forEach(l => l.classList.add('show'));
+        document.querySelectorAll('.bar-mom').forEach(l => l.classList.add('show'));
+        document.querySelectorAll('.bar-live').forEach(l => l.classList.add('show'));
+      }, bars.length * 110 + 700);
     }));
 
     // ── Stagger sections in ──
