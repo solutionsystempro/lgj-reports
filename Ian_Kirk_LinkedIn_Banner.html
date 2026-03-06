@@ -100,6 +100,7 @@
     .id-row {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 18px;
       margin-bottom: 16px;
     }
@@ -132,7 +133,7 @@
     /* Divider */
     .rule {
       height: 1px;
-      background: linear-gradient(90deg, rgba(191,255,0,0.4) 0%, rgba(191,255,0,0.05) 70%, transparent 100%);
+      background: linear-gradient(270deg, rgba(191,255,0,0.4) 0%, rgba(191,255,0,0.05) 70%, transparent 100%);
       margin-bottom: 22px;
     }
 
@@ -140,23 +141,24 @@
     .stats {
       display: flex;
       align-items: flex-end;
+      justify-content: flex-end;
       gap: 0;
     }
 
     .stat {
-      flex: 1;
+      flex: 0 0 auto;
       position: relative;
+      text-align: right;
     }
 
     .stat:not(:last-child) {
-      padding-right: 48px;
-      margin-right: 0;
+      padding-right: 56px;
     }
 
     .stat:not(:last-child)::after {
       content: '';
       position: absolute;
-      right: 24px;
+      right: 28px;
       top: 8px;
       bottom: 0;
       width: 1px;
