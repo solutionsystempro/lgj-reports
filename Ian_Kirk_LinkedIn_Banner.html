@@ -18,263 +18,334 @@
     .banner {
       width: 1584px;
       height: 396px;
-      background: #090b10;
+      background: #07090c;
       position: relative;
       font-family: 'Space Grotesk', -apple-system, sans-serif;
       overflow: hidden;
     }
 
-    /* Dot grid */
-    .banner::before {
-      content: '';
+    /* ── BACKGROUND LAYERS ── */
+
+    /* Subtle dot grid — fades toward center-right */
+    .bg-grid {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(191,255,0,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
+      background-image: radial-gradient(circle, rgba(191,255,0,0.055) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(ellipse 60% 100% at 15% 50%, black 0%, transparent 80%);
       z-index: 0;
+      pointer-events: none;
     }
 
-    /* Lime top bar */
+    /* Very faint diagonal scan lines — tech feel */
+    .bg-lines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 18px,
+        rgba(191,255,0,0.012) 18px,
+        rgba(191,255,0,0.012) 19px
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── TOP ACCENT BAR ── */
     .top-bar {
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, transparent 0%, #bfff00 20%, #bfff00 80%, transparent 100%);
-      z-index: 2;
-    }
-
-    /* Bottom bar */
-    .bottom-bar {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(191,255,0,0.2) 30%, rgba(191,255,0,0.2) 70%, transparent 100%);
-      z-index: 2;
-    }
-
-    /* Profile pic glow — centered exactly where LinkedIn places the profile photo */
-    .left-glow {
-      position: absolute;
-      left: 76px;   /* profile pic center x */
-      bottom: 0px;  /* profile pic bottom edge */
-      transform: translateX(-50%);
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle at 50% 100%,
-        rgba(191,255,0,0.55) 0%,
-        rgba(191,255,0,0.25) 15%,
-        rgba(191,255,0,0.10) 30%,
-        rgba(191,255,0,0.03) 55%,
-        transparent 70%
+      background: linear-gradient(90deg,
+        rgba(191,255,0,0.6) 0%,
+        #bfff00 8%,
+        #bfff00 70%,
+        rgba(191,255,0,0.3) 85%,
+        transparent 100%
       );
-      z-index: 1;
+      z-index: 10;
+    }
+
+    /* ── PROFILE PIC GLOW SYSTEM ── */
+
+    /* Broad outer aurora — soft lime sunrise from bottom-left */
+    .pic-aurora {
+      position: absolute;
+      left: -60px;
+      bottom: -120px;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle at 50% 50%,
+        rgba(191,255,0,0.22) 0%,
+        rgba(191,255,0,0.12) 20%,
+        rgba(191,255,0,0.05) 45%,
+        transparent 65%
+      );
       border-radius: 50%;
+      z-index: 1;
       pointer-events: none;
     }
 
-    /* Tight inner ring glow for extra intensity */
-    .pic-ring {
+    /* Mid glow — tighter, brighter */
+    .pic-mid {
       position: absolute;
       left: 76px;
-      bottom: 0px;
+      bottom: 0;
       transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
+      width: 320px;
+      height: 320px;
       background: radial-gradient(circle at 50% 100%,
-        rgba(191,255,0,0.35) 0%,
-        rgba(191,255,0,0.08) 50%,
+        rgba(191,255,0,0.45) 0%,
+        rgba(191,255,0,0.18) 25%,
+        rgba(191,255,0,0.06) 50%,
         transparent 70%
       );
-      z-index: 1;
       border-radius: 50%;
+      z-index: 2;
       pointer-events: none;
     }
 
-    /* Right glow */
+    /* Circular ring — traces the profile pic edge */
+    .pic-ring {
+      position: absolute;
+      /* Profile pic center: x≈76, y≈396 (banner bottom) */
+      left: 76px;
+      bottom: 0;
+      transform: translateX(-50%) translateY(50%);
+      width: 168px;
+      height: 168px;
+      border-radius: 50%;
+      border: 2px solid rgba(191,255,0,0.65);
+      box-shadow:
+        0 0 16px rgba(191,255,0,0.55),
+        0 0 40px rgba(191,255,0,0.25),
+        inset 0 0 20px rgba(191,255,0,0.08);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* ── RIGHT SIDE GLOW ── */
     .right-glow {
       position: absolute;
-      right: -60px;
+      right: -80px;
       top: -60px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle at center, rgba(191,255,0,0.05) 0%, transparent 65%);
-      z-index: 1;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle,
+        rgba(191,255,0,0.04) 0%,
+        transparent 65%
+      );
       border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    /* Vertical divider lines between stats */
-    .divider {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 100px;
-      background: linear-gradient(180deg, transparent, rgba(191,255,0,0.2), transparent);
-      z-index: 3;
-    }
-
-    /* Main layout — full width, content pinned to TOP half */
+    /* ── MAIN CONTENT ── */
     .content {
       position: absolute;
-      left: 0;
+      left: 240px;
       right: 0;
       top: 0;
       bottom: 0;
-      z-index: 3;
+      z-index: 5;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      padding: 30px 80px 0 80px;
+      justify-content: center;
+      padding: 0 72px 0 56px;
     }
 
-    /* Brand tag at top */
-    .brand-tag {
+    /* Name + role row */
+    .identity {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 22px;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .brand-dot {
-      width: 7px;
-      height: 7px;
+    .identity-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #f1f5f9;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .identity-sep {
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      background: #bfff00;
-      box-shadow: 0 0 10px rgba(191,255,0,0.9);
+      background: rgba(191,255,0,0.5);
       flex-shrink: 0;
     }
 
-    .brand-text {
+    .identity-role {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
+      font-weight: 500;
+      color: rgba(191,255,0,0.65);
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(191,255,0,0.7);
     }
 
-    .brand-sep {
-      width: 1px;
-      height: 12px;
-      background: rgba(191,255,0,0.25);
+    /* Thin divider line */
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg,
+        rgba(191,255,0,0.35) 0%,
+        rgba(191,255,0,0.08) 60%,
+        transparent 100%
+      );
+      margin-bottom: 24px;
     }
 
     /* Stats row */
     .stats {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       gap: 0;
     }
 
     .stat {
       flex: 1;
-      padding: 0 40px 0 0;
+      padding-right: 48px;
       position: relative;
     }
 
     .stat:not(:last-child)::after {
       content: '';
       position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      right: 24px;
+      top: 0;
+      bottom: 0;
       width: 1px;
-      height: 72px;
-      background: linear-gradient(180deg, transparent, rgba(191,255,0,0.18), transparent);
+      background: linear-gradient(180deg,
+        transparent,
+        rgba(191,255,0,0.2) 30%,
+        rgba(191,255,0,0.2) 70%,
+        transparent
+      );
     }
 
     .stat-number {
-      font-size: 72px;
+      font-size: 82px;
       font-weight: 700;
       color: #bfff00;
       line-height: 1;
       letter-spacing: -0.04em;
       text-shadow:
-        0 0 40px rgba(191,255,0,0.5),
-        0 0 100px rgba(191,255,0,0.15);
+        0 0 20px rgba(191,255,0,0.7),
+        0 0 60px rgba(191,255,0,0.3),
+        0 0 120px rgba(191,255,0,0.1);
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 500;
-      color: #6b7a8d;
-      margin-top: 8px;
-      letter-spacing: 0.16em;
+      color: #4a5568;
+      margin-top: 9px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    /* Tagline — bottom right */
-    .tagline {
+    /* ── BOTTOM STRIP ── */
+    .bottom-strip {
       position: absolute;
-      bottom: 22px;
-      right: 80px;
-      font-size: 11px;
-      font-weight: 500;
-      color: rgba(138,155,176,0.55);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      z-index: 3;
+      bottom: 18px;
+      left: 240px;
+      right: 72px;
+      z-index: 5;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
     }
 
-    .tagline::before {
-      content: '';
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      background: #bfff00;
-      border-radius: 50%;
-      box-shadow: 0 0 8px rgba(191,255,0,0.8);
-    }
-
-    /* Name + role row — sits at very top above stats */
-    .identity-row {
+    .bottom-meta {
       display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 18px;
+      align-items: center;
+      gap: 12px;
     }
 
-    .identity-name {
-      font-size: 22px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.92);
-      letter-spacing: 0.01em;
-    }
-
-    .identity-role {
-      font-size: 11px;
+    .meta-item {
+      font-size: 10px;
       font-weight: 500;
-      color: rgba(107,122,141,0.9);
+      color: rgba(100,116,139,0.7);
       letter-spacing: 0.16em;
       text-transform: uppercase;
+    }
+
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(191,255,0,0.3);
+      flex-shrink: 0;
+    }
+
+    .bottom-tagline {
+      font-size: 11px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(191,255,0,0.4);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── VERIFIED DOT ── */
+    .verified {
+      position: absolute;
+      top: 20px;
+      right: 72px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(100,116,139,0.6);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .verified-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #bfff00;
+      box-shadow: 0 0 8px rgba(191,255,0,0.9), 0 0 20px rgba(191,255,0,0.4);
     }
   </style>
 </head>
 <body>
   <div class="banner">
+
+    <!-- Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-lines"></div>
     <div class="top-bar"></div>
-    <div class="bottom-bar"></div>
-    <div class="left-glow"></div>
+
+    <!-- Profile pic glow system -->
+    <div class="pic-aurora"></div>
+    <div class="pic-mid"></div>
     <div class="pic-ring"></div>
+
+    <!-- Right ambient glow -->
     <div class="right-glow"></div>
 
-    <!-- Main content — all in the top zone -->
+    <!-- Verified dot — top right -->
+    <div class="verified">
+      <div class="verified-dot"></div>
+      Airtable Verified
+    </div>
+
+    <!-- Main content -->
     <div class="content">
-      <div class="identity-row">
+      <div class="identity">
         <div class="identity-name">Ian Ryan Kirk</div>
+        <div class="identity-sep"></div>
         <div class="identity-role">Sales Closer &middot; AI Toolbuilder</div>
       </div>
 
-      <div class="brand-tag">
-        <div class="brand-dot"></div>
-        <div class="brand-text">Lead Gen Jay</div>
-        <div class="brand-sep"></div>
-        <div class="brand-text">14 Months</div>
-        <div class="brand-sep"></div>
-        <div class="brand-text">Airtable Verified</div>
-      </div>
+      <div class="rule"></div>
 
       <div class="stats">
         <div class="stat">
@@ -292,7 +363,18 @@
       </div>
     </div>
 
-    <div class="tagline">Still learning. Still closing.</div>
+    <!-- Bottom strip -->
+    <div class="bottom-strip">
+      <div class="bottom-meta">
+        <span class="meta-item">Lead Gen Jay</span>
+        <div class="meta-dot"></div>
+        <span class="meta-item">14 Months</span>
+        <div class="meta-dot"></div>
+        <span class="meta-item">Oct 2024 – Mar 2026</span>
+      </div>
+      <div class="bottom-tagline">Still learning. Still closing.</div>
+    </div>
+
   </div>
 </body>
 </html>
