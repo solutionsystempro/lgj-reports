@@ -52,16 +52,42 @@
       z-index: 2;
     }
 
-    /* Left glow — behind profile pic zone, purely decorative */
+    /* Profile pic glow — centered exactly where LinkedIn places the profile photo */
     .left-glow {
       position: absolute;
-      left: -80px;
-      bottom: -100px;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at center, rgba(191,255,0,0.08) 0%, rgba(191,255,0,0.02) 50%, transparent 75%);
+      left: 76px;   /* profile pic center x */
+      bottom: 0px;  /* profile pic bottom edge */
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle at 50% 100%,
+        rgba(191,255,0,0.55) 0%,
+        rgba(191,255,0,0.25) 15%,
+        rgba(191,255,0,0.10) 30%,
+        rgba(191,255,0,0.03) 55%,
+        transparent 70%
+      );
       z-index: 1;
       border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Tight inner ring glow for extra intensity */
+    .pic-ring {
+      position: absolute;
+      left: 76px;
+      bottom: 0px;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 50% 100%,
+        rgba(191,255,0,0.35) 0%,
+        rgba(191,255,0,0.08) 50%,
+        transparent 70%
+      );
+      z-index: 1;
+      border-radius: 50%;
+      pointer-events: none;
     }
 
     /* Right glow */
@@ -231,6 +257,7 @@
     <div class="top-bar"></div>
     <div class="bottom-bar"></div>
     <div class="left-glow"></div>
+    <div class="pic-ring"></div>
     <div class="right-glow"></div>
 
     <!-- Main content — all in the top zone -->
