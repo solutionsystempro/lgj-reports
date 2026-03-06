@@ -87,18 +87,18 @@
       z-index: 3;
     }
 
-    /* Main layout — 3 columns of stats, centered in the right 75% */
+    /* Main layout — full width, content pinned to TOP half */
     .content {
       position: absolute;
-      left: 260px; /* leave left 260px for profile pic */
+      left: 0;
       right: 0;
       top: 0;
       bottom: 0;
       z-index: 3;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 0 80px 0 60px;
+      justify-content: flex-start;
+      padding: 30px 80px 0 80px;
     }
 
     /* Brand tag at top */
@@ -106,7 +106,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
     .brand-dot {
@@ -157,7 +157,7 @@
     }
 
     .stat-number {
-      font-size: 76px;
+      font-size: 72px;
       font-weight: 700;
       color: #bfff00;
       line-height: 1;
@@ -171,7 +171,7 @@
       font-size: 11px;
       font-weight: 500;
       color: #6b7a8d;
-      margin-top: 10px;
+      margin-top: 8px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
@@ -202,28 +202,27 @@
       box-shadow: 0 0 8px rgba(191,255,0,0.8);
     }
 
-    /* Left side decorative label — sits above profile pic area */
-    .left-label {
-      position: absolute;
-      left: 40px;
-      top: 32px;
-      z-index: 3;
+    /* Name + role row — sits at very top above stats */
+    .identity-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 18px;
     }
 
-    .left-label-line1 {
-      font-size: 13px;
+    .identity-name {
+      font-size: 22px;
       font-weight: 700;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.01em;
     }
 
-    .left-label-line2 {
-      font-size: 10px;
-      font-weight: 400;
-      color: rgba(107,122,141,0.8);
-      letter-spacing: 0.14em;
+    .identity-role {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(107,122,141,0.9);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-top: 5px;
     }
   </style>
 </head>
@@ -234,14 +233,13 @@
     <div class="left-glow"></div>
     <div class="right-glow"></div>
 
-    <!-- Top-left label (above where profile pic sits) -->
-    <div class="left-label">
-      <div class="left-label-line1">Ian Ryan Kirk</div>
-      <div class="left-label-line2">Sales Closer &middot; AI Toolbuilder</div>
-    </div>
-
-    <!-- Main content — stats -->
+    <!-- Main content — all in the top zone -->
     <div class="content">
+      <div class="identity-row">
+        <div class="identity-name">Ian Ryan Kirk</div>
+        <div class="identity-role">Sales Closer &middot; AI Toolbuilder</div>
+      </div>
+
       <div class="brand-tag">
         <div class="brand-dot"></div>
         <div class="brand-text">Lead Gen Jay</div>
