@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_BridgeKit__list_fathom_meetings",
+      "mcp__claude_ai_BridgeKit__get_all_fathom_meetings",
+      "mcp__claude_ai_BridgeKit__get_fathom_summary",
+      "Bash(python3:*)",
+      "Bash(wsl grep:*)",
+      "Bash(grep:*)",
+      "mcp__claude_ai_BridgeKit__search_fathom_meetings_by_title",
+      "mcp__claude_ai_BridgeKit__search_fathom_meetings_by_attendee",
+      "mcp__claude_ai_BridgeKit__list_connected_fathom_accounts",
+      "mcp__claude_ai_BridgeKit__search_tools",
+      "WebFetch(domain:airtable.com)",
+      "mcp__claude_ai_BridgeKit__get_fathom_transcript",
+      "mcp__claude_ai_BridgeKit__get_fathom_action_items",
+      "mcp__claude_ai_BridgeKit__send_email",
+      "mcp__claude_ai_BridgeKit__list_connected_google_accounts",
+      "mcp__claude_ai_BridgeKit__check_account_health"
+    ]
+  }
+}

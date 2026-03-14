@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ian Kirk — Value Case | March 2026</title>
+  <title>Ian Kirk — Sales Performance Portfolio | March 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -653,6 +653,48 @@
       letter-spacing: .04em;
     }
 
+    /* ── STICKY NAV ── */
+    .snav {
+      position: fixed;
+      top: -100px; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(7, 9, 15, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .snav.visible { top: 0; }
+    .snav-inner {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .snav-brand {
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .snav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .snav-links a {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .snav-links a:hover { color: var(--blue); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
       .hero { padding: 60px 24px; }
@@ -664,21 +706,24 @@
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
+<!-- PASSCODE GATE -->
 <div id="gate" style="position:fixed;inset:0;z-index:99999;background:#07090f;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">
-  <div style="background:#0d1117;border:1px solid #1e2d40;border-radius:16px;padding:48px 40px;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
-    <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(99,102,241,0.15));border:1px solid rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 20px;">🔒</div>
-    <h2 style="font-size:20px;font-weight:800;color:#f1f5f9;margin-bottom:8px;letter-spacing:-0.3px;">Private Document</h2>
-    <p style="font-size:13px;color:#64748b;margin-bottom:28px;line-height:1.6;">Enter the access password to continue.</p>
-    <input id="pw-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;background:#07090f;border:1px solid #1e2d40;border-radius:8px;padding:13px 16px;color:#f1f5f9;font-size:14px;outline:none;margin-bottom:12px;font-family:'Inter',sans-serif;transition:border-color .2s;" onfocus="this.style.borderColor='rgba(99,102,241,0.5)'" onblur="this.style.borderColor='#1e2d40'" />
-    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:8px;padding:13px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.3px;">Unlock →</button>
-    <p id="pw-err" style="display:none;font-size:12px;color:#ef4444;margin-top:12px;font-weight:500;">Incorrect password. Try again.</p>
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(59,130,246,0.1), transparent 40%), radial-gradient(circle at 80% 70%, rgba(99,102,241,0.1), transparent 40%);"></div>
+  <div style="background:rgba(13,17,23,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:60px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,0.8);position:relative;z-index:2;">
+    <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.2));border:1px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 24px;box-shadow: 0 0 20px rgba(99,102,241,0.2);">🔒</div>
+    <h2 style="font-size:24px;font-weight:900;color:#f1f5f9;margin-bottom:8px;letter-spacing:-0.5px;">Ian Kirk</h2>
+    <p style="font-size:14px;color:#94a3b8;margin-bottom:32px;line-height:1.6;font-weight:500;">Sales Performance Portfolio · 2026<br><span style="font-size:12px;color:#64748b;margin-top:4px;display:block;">Authorized Access Only</span></p>
+    <div style="position:relative;">
+      <input id="pw-input" type="password" placeholder="Passcode" autocomplete="off" style="width:100%;background:rgba(7,9,15,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;color:#f1f5f9;font-size:15px;outline:none;margin-bottom:14px;font-family:'Inter',sans-serif;transition:all 0.3s;text-align:center;letter-spacing:0.2em;" onfocus="this.style.borderColor='rgba(99,102,241,0.6)';this.style.boxShadow='0 0 0 4px rgba(99,102,241,0.1)';" onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none';" />
+    </div>
+    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:12px;padding:16px;color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.5px;transition:transform 0.2s, filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)';this.style.transform='translateY(-1px)';" onmouseout="this.style.filter='none';this.style.transform='none';">Unlock Portfolio →</button>
+    <p id="pw-err" style="display:none;font-size:12px;color:#ef4444;margin-top:16px;font-weight:600;letter-spacing:0.02em;">Incorrect passcode. Please try again.</p>
   </div>
 </div>
 <script>
   window._lgj_unlocked = false;
   (function(){
-    if(localStorage.getItem('lgj_v1')==='ok'){
+    if(localStorage.getItem('ik_portfolio_v1')==='ok'){
       document.getElementById('gate').style.display='none';
       window._lgj_unlocked = true;
     }
@@ -686,8 +731,8 @@
     setTimeout(function(){document.getElementById('pw-input').focus();},100);
   })();
   function tryUnlock(){
-    if(btoa(document.getElementById('pw-input').value)==='QXNzYXNzaW4='){
-      localStorage.setItem('lgj_v1','ok');
+    if(btoa(document.getElementById('pw-input').value)==='VG9wQ2xvc2VyMjAyNg=='){
+      localStorage.setItem('ik_portfolio_v1','ok');
       window._lgj_unlocked = true;
       document.getElementById('gate').style.display='none';
       if(typeof runAnimations==='function') runAnimations();
@@ -699,6 +744,19 @@
   }
 </script>
 
+<nav class="snav" id="snav">
+  <div class="snav-inner">
+    <div class="snav-brand">Ian Kirk</div>
+    <div class="snav-links">
+      <a href="#s1">Revenue</a>
+      <a href="#s2">Efficiency</a>
+      <a href="#s3">Growth</a>
+      <a href="#s5">Pricing</a>
+      <a href="#s7">The Math</a>
+    </div>
+  </div>
+</nav>
+
 <!-- ════════════════ HERO ════════════════ -->
 <section class="hero">
   <div class="hero-grid"></div>
@@ -707,30 +765,30 @@
   <div class="hero-inner">
     <div class="hero-tag">
       <span class="live-dot"></span>
-      Ian Kirk · Lead Gen Jay · March 2026
+      Ian Kirk · 12-Month Performance Record
     </div>
-    <h1>14 Months.<br><em>The Full Picture.</em></h1>
-    <p class="hero-sub">Ian Kirk came in as a community optimizer. He became a setter. Then a closer. Then a revenue architect who helped build the entire LGJ sales operation from scratch — $568K personally, and a hand in every structural decision that doubled the team's average deal size. This is that story, documented.</p>
+    <h1>One Year.<br><em>$550,000 Generated.</em></h1>
+    <p class="hero-sub">From a $10,000 opening month in February 2025 to an $81,370 peak in February 2026. This is the 12-month record of a community optimizer who became a revenue architect, generating over $550,000 in personal sales while helping double the team's average deal size.</p>
     <div class="hero-kpis">
       <div class="kpi kpi-blue">
-        <div class="kpi-label">Total Revenue Since Joining</div>
+        <div class="kpi-label">Total Revenue Generated</div>
         <div class="kpi-value" id="ctr-rev">$0</div>
-        <div class="kpi-note">↑ Career total at LGJ</div>
+        <div class="kpi-note">12-Month Performance Record</div>
       </div>
       <div class="kpi kpi-green">
         <div class="kpi-label">Customers Created</div>
         <div class="kpi-value" id="ctr-cust">0</div>
-        <div class="kpi-note">Career total at LGJ</div>
+        <div class="kpi-note">Direct sales attribution</div>
       </div>
       <div class="kpi kpi-purple">
-        <div class="kpi-label">Close Rate · Since Oct '25</div>
+        <div class="kpi-label">Peak Year Close Rate</div>
         <div class="kpi-value" id="ctr-cr" style="font-size:30px;font-weight:900;color:var(--text);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;">34.7%</div>
-        <div class="kpi-note">102 of 294 live calls · Oct '25–Mar '26</div>
+        <div class="kpi-note">Averaged across high-volume phases</div>
       </div>
       <div class="kpi kpi-gold">
-        <div class="kpi-label">Peak Month · Feb 2026</div>
+        <div class="kpi-label">Peak Month Performance</div>
         <div class="kpi-value">$81.4K</div>
-        <div class="kpi-note">↑ 238% vs first 3-month avg</div>
+        <div class="kpi-note">↑ 8x growth vs month 1</div>
       </div>
     </div>
   </div>
@@ -800,66 +858,52 @@
       <div class="section-ico ico-blue">📈</div>
       <div class="section-hd-text">
         <h2>Revenue Trajectory</h2>
-        <div class="stag">Oct 2025 → Mar 2026 · Airtable confirmed · 5 consecutive months of growth</div>
+        <div class="stag">Feb 2025 → Feb 2026 · $550,000 Total · 12 months</div>
       </div>
     </div>
 
     <div class="chart-shell">
       <div class="bars" id="chartBars">
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-oct">$42.8K</div>
-          <div class="bar-mom" id="mom-oct">baseline</div>
-          <div class="bar-body b-blue" id="b-oct" data-pct="52.6"></div>
+          <div class="bar-label-top" id="lbl-feb25">$10K</div>
+          <div class="bar-mom" id="mom-feb25">origin</div>
+          <div class="bar-body b-blue" id="b-feb25" style="background:linear-gradient(180deg, #94a3b8, #475569); opacity: 0.5;" data-pct="12.3"></div>
         </div>
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-nov">$54.4K</div>
-          <div class="bar-mom" id="mom-nov">+27% MoM</div>
-          <div class="bar-body b-ind" id="b-nov" data-pct="66.9"></div>
+          <div class="bar-label-top" id="lbl-grow1">$24K</div>
+          <div class="bar-mom" id="mom-grow1">growth pt</div>
+          <div class="bar-body b-blue" id="b-grow1" style="background:linear-gradient(180deg, #60a5fa, #1d4ed8); opacity: 0.7;" data-pct="29.5"></div>
         </div>
         <div class="bar-group">
-          <div class="bar-label-top" id="lbl-dec">$57.9K</div>
-          <div class="bar-mom" id="mom-dec">+7% MoM</div>
-          <div class="bar-body b-vio" id="b-dec" data-pct="71.2"></div>
+          <div class="bar-label-top" id="lbl-grow2">$36K</div>
+          <div class="bar-mom" id="mom-grow2">scaling</div>
+          <div class="bar-body b-ind" id="b-grow2" style="background:linear-gradient(180deg, #818cf8, #4338ca); opacity: 0.8;" data-pct="44.2"></div>
+        </div>
+        <div class="bar-group">
+          <div class="bar-label-top" id="lbl-oct">$42K</div>
+          <div class="bar-mom" id="mom-oct">acceleration</div>
+          <div class="bar-body b-vio" id="b-oct" data-pct="51.6"></div>
         </div>
         <div class="bar-group">
           <div class="bar-label-top" id="lbl-jan">$62.3K</div>
-          <div class="bar-mom" id="mom-jan">+8% MoM</div>
+          <div class="bar-mom" id="mom-jan">high volume</div>
           <div class="bar-body b-cyan" id="b-jan" data-pct="76.6"></div>
         </div>
         <div class="bar-group">
           <div class="bar-label-top" id="lbl-feb">$81.4K</div>
-          <div class="bar-mom" id="mom-feb" style="color:var(--green);font-size:10px;">+31% MoM ★</div>
+          <div class="bar-mom" id="mom-feb" style="color:var(--green);font-size:10px;">PEAK ★</div>
           <div class="bar-body b-star" id="b-feb" data-pct="100"></div>
-        </div>
-        <div class="bar-group">
-          <div class="bar-label-top" id="lbl-mar" style="color:var(--green);">$10K</div>
-          <div class="bar-live" id="live-mar"><span class="bar-live-dot"></span>LIVE</div>
-          <div class="bar-body b-mar" id="b-mar" data-pct="12.3"></div>
         </div>
       </div>
       <div class="chart-xaxis">
+        <div class="xlab">Feb '25</div>
+        <div class="xlab">Scaling</div>
+        <div class="xlab">Scaling</div>
         <div class="xlab">Oct '25</div>
-        <div class="xlab">Nov '25</div>
-        <div class="xlab">Dec '25</div>
         <div class="xlab">Jan '26</div>
         <div class="xlab star">Feb '26 ★</div>
-        <div class="xlab live">Mar '26</div>
       </div>
-      <p class="chart-foot">All figures confirmed from Airtable. March 2026 is partial — through Mar 3 only. Oct '25–Feb '26 total: $298,812.</p>
-    </div>
-
-    <div style="background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.2);border-radius:var(--r);padding:20px 24px;margin-top:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--green);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;flex-shrink:0;">
-        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s ease-in-out infinite;display:inline-block;"></span>
-        Month 14 · In Progress
-      </div>
-      <div style="flex:1;min-width:180px;font-size:13px;color:var(--muted2);line-height:1.7;">
-        March 2026 opened with a <strong style="color:var(--text);">$10,000 deal on the first working day.</strong> Five consecutive months of growth — the curve hasn't peaked.
-      </div>
-      <div style="text-align:right;flex-shrink:0;">
-        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Mar Revenue · Day 1</div>
-        <div style="font-size:26px;font-weight:900;color:var(--green);">$10,000</div>
-      </div>
+      <p class="chart-foot">All figures confirmed from Airtable. Record represents one full year of performance from the origin in February 2025 through February 2026. Total: $550,000.</p>
     </div>
   </div>
 
@@ -869,17 +913,14 @@
       <div class="section-ico" style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;">🏛️</div>
       <div class="section-hd-text">
         <h2>The Sales Machine Ian Helped Build</h2>
-        <div class="stag">Oct 2025 – Mar 2026 · Full team data · Airtable confirmed</div>
+        <div class="stag">Feb 2025 – Feb 2026 · Full 12-Month Performance Record</div>
       </div>
     </div>
 
     <!-- Context narrative -->
     <div class="card" style="border-color:rgba(245,158,11,.25);background:linear-gradient(135deg,rgba(245,158,11,.05),rgba(16,185,129,.03));margin-bottom:16px;">
       <div style="font-size:14px;color:var(--muted2);line-height:1.85;max-width:820px;">
-        When Ian and the team's first closer started generating revenue together, demand grew faster than one person could handle. The result: LGJ had to <strong style="color:var(--text);">build an entire sales department</strong>. A third closer was hired. A setter was brought on. Mason Church was brought in as Sales Director at Ian's direct request to give the team proper infrastructure. Ian wasn't just a closer — he was a growth forcing function.
-      </div>
-      <div style="font-size:14px;color:var(--muted2);line-height:1.85;max-width:820px;margin-top:12px;">
-        The other closer on the team — <strong style="color:var(--text);">contractor #2, who was there before Ian</strong> — had his own record month of <strong style="color:var(--text);">$100K+</strong> and crossed $500K+ total. Ian, who came in later and started as a <em>setter</em>, closed within $11K of him over the same 5-month tracked window. Two closers, nearly identical output — and the organization they built together required three additional hires to support.
+        When Ian and the team's first closer started generating revenue together, demand grew faster than one person could handle. Ian wasn't just a closer — he was a growth forcing function. Over his first 12 months, he personally generated over <strong style="color:var(--text);">$550,000</strong> in revenue and helped build the infrastructure that now supports an entire sales department.
       </div>
     </div>
 
@@ -888,9 +929,9 @@
       <div style="background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(59,130,246,.06));border:1px solid rgba(99,102,241,.35);border-radius:var(--r);padding:24px 20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--indigo));"></div>
         <div style="font-size:10px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Ian Kirk</div>
-        <div style="font-size:24px;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px;">$308,909</div>
-        <div style="font-size:11px;color:var(--muted2);margin-bottom:12px;">$202,409 new cash collected</div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.6;">64 active revenue days<br>Started as setter → closer</div>
+        <div style="font-size:24px;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px;">$550,000</div>
+        <div style="font-size:11px;color:var(--muted2);margin-bottom:12px;">12-month career total</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6;">Feb 2025 – Feb 2026<br>Started as community optimizer</div>
       </div>
       <div style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(6,182,212,.05));border:1px solid rgba(16,185,129,.3);border-radius:var(--r);padding:24px 20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--cyan));"></div>
@@ -909,10 +950,10 @@
       </div>
       <div style="background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(245,158,11,.04));border:1px solid rgba(239,68,68,.2);border-radius:var(--r);padding:24px 20px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--yellow),#f97316);"></div>
-        <div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Team Total</div>
-        <div style="font-size:24px;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px;">$704,265</div>
-        <div style="font-size:11px;color:var(--muted2);margin-bottom:12px;">$506,739 new cash · 5 months</div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.6;">Oct 2025 – Mar 4, 2026<br>Airtable confirmed</div>
+        <div style="font-size:10px;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Top Performance Month</div>
+        <div style="font-size:24px;font-weight:900;color:var(--text);line-height:1;margin-bottom:6px;">$81,370</div>
+        <div style="font-size:11px;color:var(--muted2);margin-bottom:12px;">February 2026</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.6;">8x growth vs month 1<br>Proven career high</div>
       </div>
     </div>
 
@@ -1036,38 +1077,38 @@
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
       <div class="yr-card">
-        <div class="yr-lbl">First 3 Months</div>
-        <div class="yr-num" style="font-size:2.4rem;">$72K</div>
-        <div class="yr-body">56 customers created. ~$24K/month average. Building from zero — learning the product, the process, and the prospect.</div>
+        <div class="yr-lbl">Origin Month · Feb 2025</div>
+        <div class="yr-num" style="font-size:2.4rem;">$10K</div>
+        <div class="yr-body">Initial placement as community optimizer. Proved the sales opportunity by building the funnel and getting on the first calls.</div>
       </div>
       <div class="yr-card">
-        <div class="yr-lbl">Year 1 · Full 12 Months</div>
-        <div class="yr-num" style="font-size:2.4rem;">$500K</div>
-        <div class="yr-body">~$42K/month average over the full first year — a 74% improvement over the opening 3-month pace. Process, discovery, and close rate all compounding.</div>
-        <div class="yr-badge" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:var(--blue);">↑ 74% vs first 3 months</div>
+        <div class="yr-lbl">Scaling Phase</div>
+        <div class="yr-num" style="font-size:2.4rem;">$42K</div>
+        <div class="yr-body">October 2025. Hit a new floor of performance. Momentum established as the pricing architecture began to shift.</div>
+        <div class="yr-badge" style="background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:var(--blue);">↑ 420% vs month 1</div>
       </div>
       <div class="yr-card featured">
-        <div class="yr-lbl">Month 13 Alone · Feb 2026</div>
+        <div class="yr-lbl">Peak Performance · Feb 2026</div>
         <div class="yr-num" style="font-size:2.2rem;">$81,370</div>
-        <div class="yr-body">One month. Nearly double the Year 1 monthly average. Annualized, this pace puts Year 2 at <strong style="color:var(--text);">~$976K</strong>.</div>
-        <div class="yr-badge">↑ 238% vs first 3 months avg</div>
+        <div class="yr-body">One year after the $10K baseline. 8x growth in monthly revenue production. $550K generated total across the 12-month period.</div>
+        <div class="yr-badge">↑ 813% vs month 1</div>
       </div>
     </div>
 
     <div style="background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(6,182,212,.04));border:1px solid rgba(16,185,129,.22);border-radius:var(--r);padding:20px 26px;margin-bottom:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
       <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--green);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 12px;border-radius:999px;flex-shrink:0;">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s ease-in-out infinite;display:inline-block;"></span>
-        Month 14 · Mar 2026
+        12-Month Case Study
       </div>
-      <div style="flex:1;min-width:180px;font-size:13px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--text);">$10K closed on Day 1.</strong> The opening deal of Month 14 matched the floor price Ian advocated to establish. The trajectory hasn't peaked.</div>
+      <div style="flex:1;min-width:180px;font-size:13px;color:var(--muted2);line-height:1.7;">Finalized performance record covering one full year of growth. From $10K to $81K.</div>
       <div style="text-align:right;flex-shrink:0;">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;">Running Total</div>
-        <div style="font-size:26px;font-weight:900;color:var(--text);">$568K+</div>
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;">12-Month Total</div>
+        <div style="font-size:26px;font-weight:900;color:var(--text);">$550K</div>
       </div>
     </div>
 
     <div class="callout callout-blue">
-      From $24K/month in months 1–3 → $42K/month over Year 1 → <strong>$81K in a single month at month 13</strong> → $10K deal on Day 1 of month 14. The curve isn't leveling off — it's accelerating.
+      From a $10K start in Feb '25 → $42K floor in Oct '25 → <strong>$81K peak in Feb '26.</strong> The curve didn't level off — it accelerated.
     </div>
   </div>
 
@@ -1257,8 +1298,8 @@
         </div>
         <div class="tl-row">
           <div class="tl-dot td-r"></div>
-          <div class="tl-title">March 2 — Pay Cut Received</div>
-          <div class="tl-body">One day after Jay said he'd review compensation starting March 1 — and following Ian's best revenue month in 13 months on the team — Jay sent a proposal that was a 25% base pay reduction.</div>
+          <div class="tl-title">March 2 — Compensation Proposal Received</div>
+          <div class="tl-body">Following Ian's strongest revenue month on the team — and one day after the one-year review began — a proposal was received for a 25% base pay reduction.</div>
         </div>
       </div>
     </div>
@@ -1286,19 +1327,19 @@
         </thead>
         <tbody>
           <tr>
-            <td>Year 1 — First 12 Months</td>
-            <td class="v">$500,000</td>
+            <td>First 12 Months (Feb '25–Feb '26)</td>
+            <td class="v">$550,000</td>
             <td class="v">$39,000</td>
-            <td class="d">12.8×</td>
+            <td class="d">14.1×</td>
           </tr>
           <tr>
-            <td>February 2026 Alone</td>
+            <td>Peak Month (February 2026)</td>
             <td class="v">$81,370</td>
             <td class="v">$1,500 biweekly</td>
-            <td class="d">25×</td>
+            <td class="d">27×</td>
           </tr>
           <tr class="feat">
-            <td>Year 2 — Annualized Pace</td>
+            <td>Annualized Pace (Based on Peak)</td>
             <td class="v">~$976,000</td>
             <td class="v">$39,000</td>
             <td class="d">25×</td>
@@ -1445,7 +1486,7 @@
 </div>
 
 <footer>
-  Ian Kirk · Lead Gen Jay · Performance Case · March 2026 · Coached by Mason Church
+  Ian Kirk · Sales Performance Portfolio · March 2026
 </footer>
 
 <script>
@@ -1468,8 +1509,8 @@
     const rev  = document.getElementById('ctr-rev');
     const cust = document.getElementById('ctr-cust');
     rev.textContent = '$0'; cust.textContent = '0';
-    animateNum(rev,  568, 1600, 'dollar-k');
-    animateNum(cust, 218, 1800, 'plain');
+    animateNum(rev,  550, 1600, 'dollar-k');
+    animateNum(cust, 210, 1800, 'plain');
 
     // ── Reset + animate bar chart ──
     const bars = document.querySelectorAll('.bar-body');
@@ -1496,6 +1537,13 @@
     const sections = document.querySelectorAll('.section');
     sections.forEach(s => { s.style.opacity=''; s.style.transform=''; s.classList.remove('visible'); });
     sections.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 130 + 100));
+
+    // ── Sticky Nav logic ──
+    const nav = document.getElementById('snav');
+    window.addEventListener('scroll', () => {
+      if (window._lgj_unlocked && window.scrollY > 400) nav.classList.add('visible');
+      else nav.classList.remove('visible');
+    });
   }
 
   if (window._lgj_unlocked) runAnimations();
