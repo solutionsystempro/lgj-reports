@@ -914,51 +914,55 @@
   }
 </script>
 
-<nav class="snav" id="snav">
-  <div class="snav-inner">
-    <div class="snav-brand">Ian Kirk</div>
-    <div class="snav-links">
-      <a href="#s1">Revenue</a>
-      <a href="#s2">Efficiency</a>
-      <a href="#s3">Growth</a>
-      <a href="#s5">Pricing</a>
-      <a href="#s7">The Math</a>
-    </div>
-  </div>
-</nav>
-
 <!-- ════════════════ HERO ════════════════ -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb-left"></div>
   <div class="hero-orb-right"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="live-dot"></span>
-      Ian Kirk · 12-Month Performance Record
+
+  <div class="hero-track">
+    <!-- LEFT: Identity + Proof -->
+    <div class="hero-track-left">
+      <div class="hero-tag">
+        <span class="live-dot"></span>
+        Growth Operator
+      </div>
+
+      <h1>I Build Revenue.<br><em>Then Build the<br>Systems Around It.</em></h1>
+
+      <p class="hero-sub">25+ years of building, losing, and coming back stronger. Now applying every lesson.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi kpi-blue">
+          <div class="kpi-label">Closed in 12 Months</div>
+          <div class="kpi-value" id="ctr-rev">$0</div>
+        </div>
+        <div class="kpi kpi-green">
+          <div class="kpi-label">Clients Transformed</div>
+          <div class="kpi-value" id="ctr-cust">0</div>
+        </div>
+        <div class="kpi kpi-purple">
+          <div class="kpi-label">Close Rate (300 Calls)</div>
+          <div class="kpi-value">30%+</div>
+        </div>
+        <div class="kpi kpi-gold">
+          <div class="kpi-label">Peak Month (Feb 2026)</div>
+          <div class="kpi-value">$81.4K</div>
+        </div>
+      </div>
+
+      <a href="https://leadgenjay.com/book-ian" target="_blank" rel="noopener" class="btn-primary">
+        Book a Call &rarr;
+      </a>
     </div>
-    <h1>One Year.<br><em>$550,000 Generated.</em></h1>
-    <p class="hero-sub">From a $10,000 opening month in February 2025 to an $81,370 peak in February 2026. This is the 12-month record of a community optimizer who became a revenue architect, generating over $550,000 in personal sales while helping double the team's average deal size.</p>
-    <div class="hero-kpis">
-      <div class="kpi kpi-blue">
-        <div class="kpi-label">Total Revenue Generated</div>
-        <div class="kpi-value" id="ctr-rev">$0</div>
-        <div class="kpi-note">12-Month Performance Record</div>
-      </div>
-      <div class="kpi kpi-green">
-        <div class="kpi-label">Customers Created</div>
-        <div class="kpi-value" id="ctr-cust">0</div>
-        <div class="kpi-note">Direct sales attribution</div>
-      </div>
-      <div class="kpi kpi-purple">
-        <div class="kpi-label">Peak Year Close Rate</div>
-        <div class="kpi-value" id="ctr-cr" style="font-size:30px;font-weight:900;color:var(--text);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;">34.7%</div>
-        <div class="kpi-note">Averaged across high-volume phases</div>
-      </div>
-      <div class="kpi kpi-gold">
-        <div class="kpi-label">Peak Month Performance</div>
-        <div class="kpi-value">$81.4K</div>
-        <div class="kpi-note">↑ 8x growth vs month 1</div>
+
+    <!-- RIGHT: Photo + Story -->
+    <div class="hero-track-right">
+      <img src="ian-kirk.jpg" alt="Ian Kirk - Growth Operator" class="profile-photo" />
+      <div class="story-card">
+        Built a business from cold calls and VHS tapes. Watched $10M vanish overnight.
+        Built a 2,500-rep empire and lost it the same way. Spent 14 years in the mountains.
+        Now back, applying every lesson.
       </div>
     </div>
   </div>
@@ -1680,7 +1684,7 @@
     const cust = document.getElementById('ctr-cust');
     rev.textContent = '$0'; cust.textContent = '0';
     animateNum(rev,  550, 1600, 'dollar-k');
-    animateNum(cust, 210, 1800, 'plain');
+    animateNum(cust, 218, 1800, 'plain');
 
     // ── Reset + animate bar chart ──
     const bars = document.querySelectorAll('.bar-body');
@@ -1708,12 +1712,6 @@
     sections.forEach(s => { s.style.opacity=''; s.style.transform=''; s.classList.remove('visible'); });
     sections.forEach((s, i) => setTimeout(() => s.classList.add('visible'), i * 130 + 100));
 
-    // ── Sticky Nav logic ──
-    const nav = document.getElementById('snav');
-    window.addEventListener('scroll', () => {
-      if (window._lgj_unlocked && window.scrollY > 400) nav.classList.add('visible');
-      else nav.classList.remove('visible');
-    });
   }
 
   if (window._lgj_unlocked) runAnimations();
