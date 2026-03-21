@@ -1322,6 +1322,22 @@
 
 </div>
 
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <h2>Ready to Add a Growth Operator<br>to Your Team?</h2>
+  <p>Sales execution, AI systems, and 25+ years of hard-won pattern recognition. One call to see if there is a fit.</p>
+  <a href="https://leadgenjay.com/book-ian" target="_blank" rel="noopener" class="btn-primary" style="font-size:17px;padding:16px 36px;">
+    Book a Call &rarr;
+  </a>
+</section>
+
+<!-- ── STICKY CTA ── -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="https://leadgenjay.com/book-ian" target="_blank" rel="noopener" class="btn-primary">
+    Book a Call &rarr;
+  </a>
+</div>
+
 <footer>
   Ian Kirk · Growth Operator · 2026
 </footer>
@@ -1378,6 +1394,21 @@
   }
 
   if (window._lgj_unlocked) runAnimations();
+
+  // ── Sticky CTA: show after scrolling past hero ──
+  (function() {
+    var stickyCta = document.getElementById('stickyCta');
+    var hero = document.querySelector('.hero');
+    if (!stickyCta || !hero) return;
+    function onScroll() {
+      if (hero.getBoundingClientRect().bottom < 0) {
+        stickyCta.classList.add('show');
+      } else {
+        stickyCta.classList.remove('show');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
 </script>
 </body>
 </html>
