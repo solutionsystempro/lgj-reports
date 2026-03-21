@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ian Kirk — Sales Performance Portfolio | March 2026</title>
+  <title>Ian Kirk -- Growth Operator | Value Case | 2026</title>
+  <meta name="description" content="Ian Kirk: $550K closed in 12 months, 218 clients, 30%+ close rate. Sales execution, AI systems, and 25+ years of pattern recognition. Book a call." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -702,6 +703,175 @@
       .mgrid, .cgrid { grid-template-columns: 1fr 1fr; }
       .year-split { grid-template-columns: 1fr; }
     }
+
+    /* ── TWO-TRACK HERO LAYOUT ── */
+    .hero-track {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .hero-track { grid-template-columns: 1fr; gap: 32px; }
+      .hero-track-right { order: -1; }
+    }
+
+    /* ── PROFILE PHOTO ── */
+    .profile-photo {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(99,102,241,0.3);
+      box-shadow: 0 0 40px rgba(99,102,241,0.12);
+      display: block;
+    }
+    @media (max-width: 768px) { .profile-photo { max-height: 320px; } }
+
+    /* ── STORY CARD ── */
+    .story-card {
+      background: rgba(99,102,241,0.06);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted2);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ── KPI GRID ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    /* ── CTA BUTTON ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--indigo));
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── STICKY CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s;
+      -webkit-transform: translateZ(0);
+    }
+    .sticky-cta.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .sticky-cta { bottom: 0; right: 0; left: 0; border-radius: 0; padding: 0; }
+      .sticky-cta .btn-primary { width: 100%; justify-content: center; border-radius: 0; padding: 16px 28px; }
+    }
+
+    /* ── ACT DIVIDER ── */
+    .act-divider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 8px 0;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .act-divider.visible { opacity: 1; transform: none; }
+    .act-divider hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+    .act-divider span { font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; font-style: italic; letter-spacing: 0.04em; }
+
+    /* ── PILLAR TABS ── */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+    @media (max-width: 768px) { .pillars { grid-template-columns: 1fr; } }
+    .pillar-header { background: var(--s1); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 24px; text-align: center; }
+    .pillar-header .pillar-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .pillar-header h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+
+    /* ── AI TOOL CARDS ── */
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .tool-grid { grid-template-columns: 1fr; } }
+    .tool-card {
+      background: var(--s1); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 22px 24px; text-decoration: none; display: flex; flex-direction: column; gap: 8px;
+      transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
+    }
+    .tool-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--indigo)); }
+    .tool-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-2px); }
+    .tool-card-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .tool-card-desc { font-size: 12px; color: var(--muted2); line-height: 1.6; flex: 1; }
+    .tool-card-link { font-size: 11px; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+    /* ── TICKER ── */
+    .ticker-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.015); padding: 14px 0; position: relative; margin: 48px 0; }
+    .ticker-wrap::before, .ticker-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+    .ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+    .ticker-wrap::after  { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
+    .ticker-track { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+    .ticker-item { display: inline-flex; align-items: center; padding: 0 32px; font-size: 12px; font-weight: 600; color: var(--muted2); letter-spacing: 0.04em; }
+    .ticker-sep { color: var(--indigo); margin-left: 32px; font-size: 10px; opacity: 0.5; }
+
+    /* ── TESTIMONIAL CARDS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    @media (max-width: 768px) { .testi-grid { grid-template-columns: 1fr; } }
+    .testi-card { background: var(--s1); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 24px 20px; display: flex; flex-direction: column; gap: 14px; }
+    .testi-badge { display: inline-block; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); color: var(--indigo); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .testi-quote { font-size: 14px; color: var(--muted2); line-height: 1.75; flex: 1; }
+    .testi-author { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .testi-initials { width: 40px; height: 40px; border-radius: 50%; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--muted2); flex-shrink: 0; }
+    .testi-name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .testi-title-sm { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* ── FINAL CTA ── */
+    .final-cta { text-align: center; padding: 80px 40px; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(99,102,241,0.08) 0%, transparent 70%); border-top: 1px solid var(--border); }
+    .final-cta h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
+    .final-cta p { font-size: 16px; color: var(--muted2); max-width: 520px; margin: 0 auto 36px; line-height: 1.7; }
+
+    /* ── ACT CARDS ── */
+    .act-card { background: var(--s1); border: 1px solid var(--border); border-radius: var(--r); padding: 32px 36px; margin-bottom: 8px; }
+    .act-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .act-card h3 { font-size: 1.35rem; font-weight: 800; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+    .act-card p { font-size: 14px; color: var(--muted2); line-height: 1.8; margin-bottom: 12px; }
+    .act-card p:last-child { margin-bottom: 0; }
+    .act-card strong { color: var(--text); }
+    .act-insight { font-size: 14px; font-style: italic; color: var(--muted2); border-left: 3px solid var(--indigo); padding-left: 16px; margin-top: 16px; line-height: 1.7; }
+    .act-photo { width: 100%; max-height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border); }
+
+    /* ── SECTION LABEL ── */
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+
+    /* ── MOBILE EXTRA ── */
+    @media (max-width: 768px) { .container { padding-bottom: 100px; } }
+    @media (max-width: 480px) {
+      .hero { padding: 48px 20px 40px; }
+      .act-card { padding: 24px 20px; }
+      .final-cta { padding: 60px 24px; }
+      .kpi-grid { gap: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -712,7 +882,7 @@
   <div style="background:rgba(13,17,23,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:60px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,0.8);position:relative;z-index:2;">
     <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.2));border:1px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 24px;box-shadow: 0 0 20px rgba(99,102,241,0.2);">🔒</div>
     <h2 style="font-size:24px;font-weight:900;color:#f1f5f9;margin-bottom:8px;letter-spacing:-0.5px;">Ian Kirk</h2>
-    <p style="font-size:14px;color:#94a3b8;margin-bottom:32px;line-height:1.6;font-weight:500;">Sales Performance Portfolio · 2026<br><span style="font-size:12px;color:#64748b;margin-top:4px;display:block;">Authorized Access Only</span></p>
+    <p style="font-size:14px;color:#94a3b8;margin-bottom:32px;line-height:1.6;font-weight:500;">Growth Operator Value Case · 2026<br><span style="font-size:12px;color:#64748b;margin-top:4px;display:block;">Authorized Access Only</span></p>
     <div style="position:relative;">
       <input id="pw-input" type="password" placeholder="Passcode" autocomplete="off" style="width:100%;background:rgba(7,9,15,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;color:#f1f5f9;font-size:15px;outline:none;margin-bottom:14px;font-family:'Inter',sans-serif;transition:all 0.3s;text-align:center;letter-spacing:0.2em;" onfocus="this.style.borderColor='rgba(99,102,241,0.6)';this.style.boxShadow='0 0 0 4px rgba(99,102,241,0.1)';" onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none';" />
     </div>
