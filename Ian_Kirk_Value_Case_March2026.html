@@ -668,47 +668,6 @@
       letter-spacing: .04em;
     }
 
-    /* ── STICKY NAV ── */
-    .snav {
-      position: fixed;
-      top: -100px; left: 0; right: 0;
-      z-index: 1000;
-      background: rgba(7, 9, 15, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
-      transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .snav.visible { top: 0; }
-    .snav-inner {
-      max-width: 940px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .snav-brand {
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-    .snav-links {
-      display: flex;
-      gap: 20px;
-    }
-    .snav-links a {
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: color 0.2s;
-    }
-    .snav-links a:hover { color: var(--blue); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
@@ -900,7 +859,7 @@
     <div style="position:relative;">
       <input id="pw-input" type="password" placeholder="Passcode" autocomplete="off" style="width:100%;background:rgba(7,9,15,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;color:#f1f5f9;font-size:15px;outline:none;margin-bottom:14px;font-family:'Inter',sans-serif;transition:all 0.3s;text-align:center;letter-spacing:0.2em;" onfocus="this.style.borderColor='rgba(99,102,241,0.6)';this.style.boxShadow='0 0 0 4px rgba(99,102,241,0.1)';" onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none';" />
     </div>
-    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:12px;padding:16px;color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.5px;transition:transform 0.2s, filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)';this.style.transform='translateY(-1px)';" onmouseout="this.style.filter='none';this.style.transform='none';">Unlock Portfolio →</button>
+    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:12px;padding:16px;color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.5px;transition:transform 0.2s, filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)';this.style.transform='translateY(-1px)';" onmouseout="this.style.filter='none';this.style.transform='none';">Unlock Value Case →</button>
     <p id="pw-err" style="display:none;font-size:12px;color:#ef4444;margin-top:16px;font-weight:600;letter-spacing:0.02em;">Incorrect passcode. Please try again.</p>
   </div>
 </div>
@@ -984,57 +943,13 @@
 
 <div class="container">
 
-  <!-- ── THE JOURNEY ── -->
-  <div class="section" id="s0">
-    <div class="section-hd">
-      <div class="section-ico ico-indigo" style="background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);">⚡</div>
-      <div class="section-hd-text">
-        <h2>The Journey</h2>
-        <div class="stag">1999 to Now - 25+ Years of Building, Losing, and Coming Back</div>
-      </div>
-    </div>
-
-    <!-- Act 1 -->
-    <div class="act-card">
-      <div class="act-label">Act 1 - The Builder (1999-2012)</div>
-      <h3>Built from scratch. Then built bigger.</h3>
-      <p>Started with cold calls and VHS tapes: a 5-figure monthly wakeboarding school built through pure hustle. Moved into real estate and became a top producer. Then went all in on MLM: <strong>2,500 reps, $500K+ MRR</strong>, a full-scale organization.</p>
-      <p>Then a single executive dispute made it disappear. Twice.</p>
-    </div>
-
-    <!-- Divider -->
-    <div class="act-divider section">
-      <hr />
-      <span>Then it was gone overnight.</span>
-      <hr />
-    </div>
-
-    <!-- Act 2 -->
-    <div class="act-card">
-      <div class="act-label">Act 2 - The Mountains (2012-2024)</div>
-      <img src="ian-adventure.jpg" alt="Ian Kirk in the mountains" class="act-photo" />
-      <h3>14 years. On purpose.</h3>
-      <p>Tandem pilot. Snowboard instructor. Airbnb arbitrage operator (covered all living expenses). Lyft and Uber driver when weather grounded the flights.</p>
-      <p class="act-insight">"When the conditions didn't let me fly people for money, I drove people for money. I always found a way to cash flow."</p>
-      <p>The entrepreneurs who outlast everyone understand who they are before they sell anything. Those 14 years were the education no funnel can teach.</p>
-    </div>
-
-    <!-- Act 3 -->
-    <div class="act-card" style="border-color:rgba(99,102,241,0.3);background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(16,185,129,0.03));">
-      <div class="act-label">Act 3 - Growth Operator (2024-Now)</div>
-      <h3>All of it, applied.</h3>
-      <p><strong>$558K closed. 218 clients. AI tools built from scratch.</strong> Not just closing. Building the whole machine.</p>
-      <p>The 25 years of pattern recognition, the resilience from losing everything twice, and the systems thinking from cash-flowing life in the mountains: all of it running in parallel on every call.</p>
-    </div>
-  </div>
-
   <!-- ── WHAT I BRING TO A TEAM ── -->
   <div class="section">
     <div class="section-hd">
       <div class="section-ico ico-blue" style="width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;">🏆</div>
       <div class="section-hd-text">
         <h2>What I Bring to a Team</h2>
-        <div class="stag">Sales Execution + Systems Building + Team Leverage</div>
+        <div class="stag">Sales Execution + Pricing Leadership + Systems Building</div>
       </div>
     </div>
     <div class="pillars">
@@ -1044,11 +959,11 @@
       </div>
       <div class="pillar-header">
         <div class="pillar-num">Pillar 02</div>
-        <h3>Systems Building</h3>
+        <h3>Pricing Leadership</h3>
       </div>
       <div class="pillar-header">
         <div class="pillar-num">Pillar 03</div>
-        <h3>Team Leverage</h3>
+        <h3>Systems Building</h3>
       </div>
     </div>
   </div>
@@ -1177,12 +1092,12 @@
     </div>
   </div>
 
-  <!-- ── PILLAR 2: SYSTEMS BUILDING ── -->
+  <!-- ── PILLAR 03: SYSTEMS BUILDING ── -->
   <div class="section" id="s2-tools">
     <div class="section-hd">
       <div class="section-ico ico-indigo">🤖</div>
       <div class="section-hd-text">
-        <h2>Pillar 02 - Systems Building</h2>
+        <h2>Pillar 03 - Systems Building</h2>
         <div class="stag">AI tools built from scratch - each one running in production</div>
       </div>
     </div>
@@ -1220,7 +1135,7 @@
     <div class="section-hd">
       <div class="section-ico" style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;">💡</div>
       <div class="section-hd-text">
-        <h2>Pillar 03 - Pricing Leadership</h2>
+        <h2>Pillar 02 - Pricing Leadership</h2>
         <div class="stag">Ian didn't just close deals. He changed the economics of the entire offer.</div>
       </div>
     </div>
