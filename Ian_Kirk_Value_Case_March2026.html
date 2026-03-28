@@ -849,43 +849,6 @@
 </head>
 <body>
 
-<!-- PASSCODE GATE -->
-<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#07090f;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">
-  <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(59,130,246,0.1), transparent 40%), radial-gradient(circle at 80% 70%, rgba(99,102,241,0.1), transparent 40%);"></div>
-  <div style="background:rgba(13,17,23,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:60px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 40px 100px rgba(0,0,0,0.8);position:relative;z-index:2;">
-    <div style="width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(99,102,241,0.2));border:1px solid rgba(99,102,241,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 24px;box-shadow: 0 0 20px rgba(99,102,241,0.2);">🔒</div>
-    <h2 style="font-size:24px;font-weight:900;color:#f1f5f9;margin-bottom:8px;letter-spacing:-0.5px;">Ian Kirk</h2>
-    <p style="font-size:14px;color:#94a3b8;margin-bottom:32px;line-height:1.6;font-weight:500;">Growth Operator Value Case · 2026<br><span style="font-size:12px;color:#64748b;margin-top:4px;display:block;">Authorized Access Only</span></p>
-    <div style="position:relative;">
-      <input id="pw-input" type="password" placeholder="Passcode" autocomplete="off" style="width:100%;background:rgba(7,9,15,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;color:#f1f5f9;font-size:15px;outline:none;margin-bottom:14px;font-family:'Inter',sans-serif;transition:all 0.3s;text-align:center;letter-spacing:0.2em;" onfocus="this.style.borderColor='rgba(99,102,241,0.6)';this.style.boxShadow='0 0 0 4px rgba(99,102,241,0.1)';" onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none';" />
-    </div>
-    <button onclick="tryUnlock()" style="width:100%;background:linear-gradient(135deg,#3b82f6,#6366f1);border:none;border-radius:12px;padding:16px;color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.5px;transition:transform 0.2s, filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)';this.style.transform='translateY(-1px)';" onmouseout="this.style.filter='none';this.style.transform='none';">Unlock Value Case →</button>
-    <p id="pw-err" style="display:none;font-size:12px;color:#ef4444;margin-top:16px;font-weight:600;letter-spacing:0.02em;">Incorrect passcode. Please try again.</p>
-  </div>
-</div>
-<script>
-  window._lgj_unlocked = false;
-  (function(){
-    if(localStorage.getItem('ik_portfolio_v1')==='ok'){
-      document.getElementById('gate').style.display='none';
-      window._lgj_unlocked = true;
-    }
-    document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
-    setTimeout(function(){document.getElementById('pw-input').focus();},100);
-  })();
-  function tryUnlock(){
-    if(btoa(document.getElementById('pw-input').value)==='MTB4R3Jvd3Ro'){
-      localStorage.setItem('ik_portfolio_v1','ok');
-      window._lgj_unlocked = true;
-      document.getElementById('gate').style.display='none';
-      if(typeof runAnimations==='function') runAnimations();
-    } else {
-      document.getElementById('pw-err').style.display='block';
-      document.getElementById('pw-input').value='';
-      document.getElementById('pw-input').focus();
-    }
-  }
-</script>
 
 <!-- ════════════════ HERO ════════════════ -->
 <section class="hero">
@@ -1354,7 +1317,7 @@
 
   }
 
-  if (window._lgj_unlocked) runAnimations();
+  runAnimations();
 
   // ── Sticky CTA: show after scrolling past hero ──
   (function() {
